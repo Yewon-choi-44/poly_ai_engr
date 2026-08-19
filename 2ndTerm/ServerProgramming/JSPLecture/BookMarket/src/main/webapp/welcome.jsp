@@ -12,10 +12,10 @@ pageEncoding="UTF-8"%>
 <body>
 	<div class = "container py-4">
 		<%@ include file = "menu.jsp" %>
-	<%! 
-	String greeting = "도서 쇼핑몰에 오신 것을 환영합니다";
-	String tagline = "Welcome to Web Market!"; 
-	%>
+		<%! 
+		String greeting = "도서 쇼핑몰에 오신 것을 환영합니다";
+		String tagline = "Welcome to Web Market!"; 
+		%>
 	
 	<div class = "p-5 mb-4 bg-body-tertiary rounded-3">
 		<div class="container-fluid py-5">
@@ -44,9 +44,9 @@ pageEncoding="UTF-8"%>
 					String CT = hour + ":" + minute + ":" + second + " " + am_pm;
 					out.println("현재 접속 시각: " + CT + "\n");
 				%>
-				<%@include file = "footer.jsp" %>
 			</div>
 		</div>
+		<%@include file = "footer.jsp" %>
 	</div>
 	</div>
 </body>
