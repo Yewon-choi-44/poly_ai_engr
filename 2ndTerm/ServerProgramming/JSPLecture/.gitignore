@@ -1,0 +1,7 @@
+/.metadata/
+/build/
+/WEB-INF/lib/*.jar
+/.settings/
+Servers/
+/*.class
+/.log
