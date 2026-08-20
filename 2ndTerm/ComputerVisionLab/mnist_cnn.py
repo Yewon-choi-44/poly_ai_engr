@@ -1,3 +1,5 @@
+# mnist_cnn.py
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -14,8 +16,6 @@ print(device)
 mnist_train = dsets.MNIST(root='./data', train=True,
                           transform=transforms.ToTensor(), download=True)
 
-mnist_train = dsets.MNIST(root='./data', train=True,
-                          transform=transforms.ToTensor(), download=True)
 mnist_test = dsets.MNIST(root='./data', train=False,
                          transform=transforms.ToTensor(), download=True)
 

@@ -16,7 +16,7 @@ ComputerVisionLab/
 │   └── settings.json
 ├── Own_ML_Class.py                               # 커스텀 머신러닝/딥러닝 유틸리티 및 모델 클래스
 ├── mnist_cnn.py                                  # MNIST CNN 모델 학습 및 평가 스크립트
-├── 실습_CNN_Transfer_수정_ipynb의_사본.ipynb      # CNN 및 전이학습(Transfer Learning) 실습 주피터 노트북
+├── 실습_CNN_Transfer_수정_ipynb의_사본.ipynb      # CNN 및 전이학습(Transfer Learning) 실습 주피터 노트북 (과제)
 ├── mnist_clf.pth                                 # 학습 완료된 분류기 모델 가중치
 ├── mnist_cnn.pt                                  # MNIST CNN 체크포인트 모델
 ├── mnist_cnn.pth                                 # MNIST CNN 가중치 모델
