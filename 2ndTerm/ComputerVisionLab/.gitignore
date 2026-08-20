@@ -1,2 +1,38 @@
+﻿# Python & 캐시
 __pycache__/
+*.py[cod]
+*$py.class
+
+# IDE & 에디터 설정
 .vscode/
+.idea/
+
+# Jupyter Notebook 자동 저장/체크포인트
+.ipynb_checkpoints/
+
+# 데이터셋 (용량이 크므로 제외)
+data/
+*.zip
+*.tar
+*.tar.gz
+*.gz
+
+# 모델 가중치 및 체크포인트 (대용량 바이너리 파일)
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.weights
+*.h5
+
+# 훈련 로그 & 가상환경
+runs/
+logs/
+.venv/
+venv/
+env/
+
+# OS 임시 파일
+Thumbs.db
+.DS_Store
