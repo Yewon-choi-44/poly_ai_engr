@@ -23,6 +23,16 @@
 | ➕ 추가 | `exam1/src/components/RawHTML.vue` - 원시 HTML 렌더링(`v-html` vs `{{ }}`) 컴포넌트 추가 |
 | ➕ 추가 | `exam1/src/components/AttrBind1.vue` - 속성 바인딩 기본(`v-bind`, `:`) 컴포넌트 추가 |
 | ➕ 추가 | `exam1/src/components/AttrBind2.vue` - 불리언 속성 바인딩(`:disabled`) 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/AttrBind3.vue` - 이미지 `src` 속성 바인딩 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/AttrBind3_2.vue` - 이벤트 기반 반응형 이미지 변경 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/DynaAttr1.vue` - 동적 인자 바인딩(`:[attributeName]`) 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/DynaAttr2.vue` - 다중 속성 객체 일괄 바인딩(`v-bind="object"`) 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/DynaAttr2_2.vue` - `v-html` + 다중 속성 객체 바인딩 응용 1 추가 |
+| ➕ 추가 | `exam1/src/components/DynaAttr2_2_1.vue` - `v-html` + 다중 속성 객체 바인딩 응용 2 추가 |
+| ➕ 추가 | `exam1/src/components/JSExpr.vue` - 템플릿 내 자바스크립트 표현식 평가 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/CondRender.vue` - 조건부 렌더링 기본(`v-if` vs `v-show`) 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/CondRender2.vue` - 다중 조건부 렌더링(`v-if`, `v-else-if`, `v-else`) 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/EventHandler.vue` - 이벤트 핸들러 함수 정의 및 호출 컴포넌트 추가 |
 | ➕ 추가 | `DirectoryStructure.md` 및 `README.md` 문서 생성 |
 | ➕ 추가 | `.gitignore` - 전역 깃 무시 규칙(의존성, 빌드 산출물, 환경변수, OS/IDE 임시파일 등) 추가 |
 | ➕ 추가 | `GEMINI.md` - 워크스페이스 전용 실습 아카이빙 및 디렉토리 관리 규칙 등록 |
@@ -59,7 +69,7 @@ BigDataFramework/                            ← 빅데이터프레임워크 워
     │   └── favicon.ico                      ← 파비콘
     └── src/
         ├── main.js                          ← 앱 엔트리 포인트 (createApp)
-        ├── App.vue                          ← 메인 루트 컴포넌트
+        ├── App.vue                          ← 메인 루트 컴포넌트 (CondRender2 연동)
         ├── App copy.vue                     ← 루트 컴포넌트 백업본
         ├── ButtonCounter.vue                ← 카운터 버튼 컴포넌트
         ├── TextInterpolation.vue            ← 텍스트 보간법 컴포넌트
@@ -69,8 +79,18 @@ BigDataFramework/                            ← 빅데이터프레임워크 워
         │   └── logo.svg
         └── components/                      ← Vue 컴포넌트
             ├── RawHTML.vue                  ← 원시 HTML 렌더링 실습 컴포넌트
-            ├── AttrBind1.vue                ← 🆕 속성 바인딩 기본(v-bind, :) 실습 컴포넌트
-            ├── AttrBind2.vue                ← 🆕 불리언 속성 바인딩(:disabled) 실습 컴포넌트
+            ├── AttrBind1.vue                ← 속성 바인딩 기본(v-bind, :) 실습 컴포넌트
+            ├── AttrBind2.vue                ← 불리언 속성 바인딩(:disabled) 실습 컴포넌트
+            ├── AttrBind3.vue                ← 이미지 src 속성 바인딩 실습 컴포넌트
+            ├── AttrBind3_2.vue              ← 이벤트 기반 반응형 이미지 변경 컴포넌트
+            ├── DynaAttr1.vue                ← 동적 인자 바인딩(:[attributeName]) 실습 컴포넌트
+            ├── DynaAttr2.vue                ← 다중 속성 객체 일괄 바인딩(v-bind="obj") 컴포넌트
+            ├── DynaAttr2_2.vue              ← 🆕 v-html + 다중 속성 바인딩 응용 1
+            ├── DynaAttr2_2_1.vue            ← 🆕 v-html + 다중 속성 바인딩 응용 2
+            ├── JSExpr.vue                   ← 🆕 템플릿 내 JS 표현식 평가 컴포넌트
+            ├── CondRender.vue               ← 🆕 조건부 렌더링 기본(v-if vs v-show)
+            ├── CondRender2.vue              ← 🆕 다중 조건부 렌더링(v-if, v-else-if, v-else)
+            ├── EventHandler.vue             ← 🆕 이벤트 핸들러 함수 정의 및 호출
             ├── HelloWorld.vue
             ├── TheWelcome.vue
             ├── WelcomeItem.vue
@@ -88,6 +108,16 @@ BigDataFramework/                            ← 빅데이터프레임워크 워
      - 실습 3: 원시 HTML 렌더링 (`RawHTML.vue` ↔ `App.vue`, `v-html` vs `{{ }}`)
      - 실습 4: 속성 바인딩 기본 (`AttrBind1.vue` ↔ `App.vue`, `v-bind`, `:`)
      - 실습 5: 불리언 속성 바인딩 (`AttrBind2.vue` ↔ `App.vue`, `:disabled`, Truthy/Falsy)
+     - 실습 6: 이미지 속성 바인딩 (`AttrBind3.vue` ↔ `App.vue`, `:src`)
+     - 실습 7: 반응형 이미지 변경 (`AttrBind3_2.vue` ↔ `App.vue`, `@click`, `.value`)
+     - 실습 8: 동적 인자 바인딩 (`DynaAttr1.vue` ↔ `App.vue`, `:[attributeName]`)
+     - 실습 9: 다중 속성 객체 일괄 바인딩 (`DynaAttr2.vue` ↔ `App.vue`, `v-bind="obj"`)
+     - 실습 10: v-html + 다중 속성 바인딩 1 (`DynaAttr2_2.vue` ↔ `App.vue`)
+     - 실습 11: v-html + 다중 속성 바인딩 2 (`DynaAttr2_2_1.vue` ↔ `App.vue`)
+     - 실습 12: 템플릿 내 JS 표현식 평가 (`JSExpr.vue` ↔ `App.vue`)
+     - 실습 13: 조건부 렌더링 기본 (`CondRender.vue` ↔ `App.vue`, `v-if` vs `v-show`)
+     - 실습 14: 다중 조건부 렌더링 (`CondRender2.vue` ↔ `App.vue`, `v-if`/`v-else-if`/`v-else`)
+     - 실습 15: 이벤트 핸들러 함수 정의 (`EventHandler.vue` ↔ `App.vue`)
      - 핵심 문법 정리 표 (Key Takeaways) 수록
 3. **`exam1/` (Vite 프로젝트 실습)**
    - Vite 기반 Vue 3 단일 페이지 애플리케이션(SPA) 프로젝트 구성.

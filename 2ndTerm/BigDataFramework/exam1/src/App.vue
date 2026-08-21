@@ -1,9 +1,9 @@
 <script lang = "js" setup>
-  import RawText from "./components/RawHTML.vue";
+  import CondRender2 from "./components/CondRender2.vue";
 </script>
 
 <template>
-  <RawText/>
+  <CondRender2/>
 </template>
 
 <style>
