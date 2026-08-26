@@ -36,3 +36,10 @@ env/
 # OS 임시 파일
 Thumbs.db
 .DS_Store
+
+# 기타
+notes/
+synthetic_capacitors/
+
+
+
