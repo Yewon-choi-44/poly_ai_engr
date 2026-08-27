@@ -1,9 +1,9 @@
 <script lang = "js" setup>
-  import CondRender2 from "./components/CondRender2.vue";
+  import DeepReactivity from "./components/DeepReactivity.vue";
 </script>
 
 <template>
-  <CondRender2/>
+  <DeepReactivity />
 </template>
 
 <style>
