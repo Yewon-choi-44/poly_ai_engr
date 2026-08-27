@@ -1,24 +1,39 @@
 # ==========================================
-# 1. 의존성 패키지 (exam1 및 향후 추가될 하위 프로젝트 포함)
+# 1. 의존성 패키지 (exam1, exam2 및 향후 추가될 하위 프로젝트 포함)
 # ==========================================
 node_modules/
 .pnp
 .pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # ==========================================
-# 2. 빌드 및 배포 결과물 / 캐시
+# 2. 빌드 및 배포 결과물 / 캐시 (Vite, TypeScript, ESLint 등)
 # ==========================================
 dist/
 dist-ssr/
 coverage/
 *.local
+.vite/
+.cache/
 *.tsbuildinfo
+tsconfig.tsbuildinfo
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
 .eslintcache
+.stylelintcache
+.prettiercache
+.turbo/
 
 # ==========================================
-# 3. Vite / 테스트 도구 임시 파일 (exam1 규칙 반영)
+# 3. Vite / 테스트 도구 임시 파일 (exam1, exam2 규칙 반영)
 # ==========================================
 *.timestamp-*-*.mjs
+*.timestamp-*.mjs
 /cypress/videos/
 /cypress/screenshots/
 __screenshots__/
@@ -35,11 +50,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # ==========================================
-# 5. 환경 변수 및 보안 파일
+# 5. 환경 변수 및 보안/인증 파일
 # ==========================================
 .env
 .env.local
 .env.*.local
+*.pem
 
 # ==========================================
 # 6. 에디터 및 IDE 설정

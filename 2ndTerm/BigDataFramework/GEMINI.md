@@ -6,16 +6,19 @@
 ---
 
 ## 1. 일별 실습 아카이빙 원칙 (`daily_practice/`)
-- 실습 코드는 `daily_practice/YYMMDD_요일/` (예: `daily_practice/260821_fri/`) 폴더 아래에 날짜별로 모아둡니다.
-- `exam1/src` 등에서 작성한 개별 `.vue` 컴포넌트와 스크립트 파일을 해당 날짜 폴더로 수집/보관합니다.
+- 실습 코드는 `daily_practice/YYMMDD_요일/` (예: `daily_practice/260821_fri/`, `daily_practice/260827_thu/`) 폴더 아래에 날짜별로 모아둡니다.
+- `exam1/src`, `exam2/src` 등 하위 실습 프로젝트에서 작성한 개별 `.vue` 컴포넌트, 페이지 파일(`src/pages/`), 스크립트(`.js`, `.ts`)를 해당 날짜 폴더로 수집/보관합니다.
 
-## 2. 실습 정리 마크다운 문서화 (`README.md`)
-- 각 날짜 폴더 내에 `README.md` 문서를 작성하여 실습 내용을 체계적으로 정리합니다.
+## 2. 실습 정리 마크다운 문서화 (`YYYY-MM-DD.md`)
+- 각 날짜 폴더 내에 `YYYY-MM-DD.md` 문서를 작성하여 당일 실습 내용을 체계적으로 정리합니다.
 - **필수 포함 항목**:
-  1. **개별 자식 컴포넌트 (`*.vue`)**: 코드 및 핵심 동작 원리
-  2. **대응되는 부모 컴포넌트 (`App.vue`)**: 해당 자식 컴포넌트를 import하고 렌더링하는 실행 코드
-  3. **자바스크립트/기타 스크립트 (`*.js`)**: 문법 테스트 및 실행 코드
-  4. **💡 핵심 문법 정리 표 (Key Takeaways)**: 당일 학습한 Vue 3/JS 주요 개념 요약
+  1. **개별 실습/페이지 컴포넌트 (`*.vue`)**: 전체 코드 및 핵심 동작 원리 설명
+  2. **실행 환경 및 진입 구조**:
+     - 단일 컴포넌트 교체 방식(`exam1`): 대응되는 부모 컴포넌트(`App.vue`) 및 임포트/렌더링 코드
+     - 라우팅 방식(`exam2` 등): 파일 기반 라우팅 경로 매핑(URL), `<router-view>` 및 Vuetify 루트 구조
+  3. **스크립트/테스트 코드 (`*.js`, `*.ts`)**: 문법 테스트, 유틸리티, 백업 스크립트 등
+  4. **TypeScript 및 UI 라이브러리 연동**: TypeScript 인터페이스/타입, Vuetify 3 컴포넌트(`v-*`) 속성 및 활용법
+  5. **💡 핵심 문법 정리 표 (Key Takeaways)**: 당일 학습한 Vue 3 (Reactivity, Computed, Binding, v-model 등) 및 Vuetify/JS 주요 개념 요약
 
 ## 3. 디렉토리 구조 및 변경 이력 누적 (`DirectoryStructure.md`)
 - 새로운 실습, 폴더, 설정 파일이 추가될 때마다 `DirectoryStructure.md`의 `## 변경 이력 (Changelog)` 섹션 최상단에 새 날짜를 추가합니다.

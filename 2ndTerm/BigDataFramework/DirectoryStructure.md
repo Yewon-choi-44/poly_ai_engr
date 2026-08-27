@@ -11,6 +11,210 @@
 
 ---
 
+## 🗓️ 2026-08-27 (목)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `notes/` - 2회차(`2026_빅데이터프레임워크_2.pdf`), 3회차(`2026_빅데이터프레임워크_3.pdf`) 강의 자료 추가 |
+| ➕ 추가 | `scripts/` - 아카이빙/백업 유틸리티 스크립트(`backup.js`) 추가 |
+| ➕ 추가 | `daily_practice/260827_thu/` - 당일 실습 코드(26개) 아카이빙 및 상세 실습 정리 문서(`2026-08-27.md`) 작성 |
+| ➕ 추가 | `exam1/src/components/RefExam.vue` - `ref()` 기본 반응형 변수 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/RefSetupExam.vue` - `<script setup>` 구문과 `ref()` 연동 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/ReactiveFn.vue` - `reactive()` 객체 기반 반응형 상태 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/ReactiveReDef.vue` - `reactive()` 재할당 제약 및 반응성 유지 기법 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/DeepReactivity.vue` - 중첩 객체/배열 깊은 반응성(Deep Reactivity) 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/ReactiveDiff1.vue` - `ref` vs `reactive` 기본 동작 및 원시값/객체 비교 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/ReactiveDiff2.vue` - `ref` vs `reactive` 구조분해할당 및 참조 교체 비교 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/PseudoRef.vue` - `ref()` Getter/Setter 내부 동작 원리(Pseudo-ref) 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam1/src/components/NextTick.vue` - DOM 비동기 업데이트 큐와 `nextTick()` 실행 시점 실습 컴포넌트 추가 |
+| 🔧 변경 | `exam1/src/App.vue` - 최신 실습 컴포넌트(`DeepReactivity.vue`) 연동으로 변경 |
+| ➕ 추가 | `exam2/` - Vuetify 3 + Vue Router + TypeScript 기반의 두 번째 실습 프로젝트 신규 구성 |
+| ➕ 추가 | `exam2/src/pages/ComputedProp.vue` - `computed()` 계산된 속성 기본 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/CachedPropFunc.vue` - `computed` 캐싱 vs `methods` 호출 비교 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/WritableComputed.vue` - Getter/Setter를 가진 Writable Computed 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/VueList.vue` - `v-for` 배열 목록 렌더링 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/TodoList.vue` - `v-for` 기반 Todo 추가/삭제 반응성 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/ClassBind.vue` - `:class` 객체 구문 동적 클래스 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/ArrayClassBind.vue` - `:class` 배열 구문 및 삼항 연산자 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/ClassBindComponent.vue` - 컴포넌트 루트 엘리먼트 클래스 상속 및 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/StyleBind.vue` - `:style` 인라인 스타일 객체 및 배열 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/TextFormBind.vue` - `v-model` 단일행/다중행(textarea) 텍스트 폼 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/CheckboxFormBind.vue` - `v-model` 단일(불리언) 및 다중(배열) 체크박스 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/RadioSelectFormBind_2.vue` - `v-model` 라디오 버튼 및 드롭다운 셀렉트 박스 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam2/src/pages/VTextFields.vue` - Vuetify `v-text-field` 폼 컴포넌트 바인딩 실습 1 추가 |
+| ➕ 추가 | `exam2/src/pages/VTextFields_2.vue` - Vuetify `v-text-field` 폼 컴포넌트 바인딩 실습 2 추가 |
+
+### 현재 디렉토리 구조
+
+```text
+BigDataFramework/                            ← 빅데이터프레임워크 워크스페이스 루트
+│
+├── .gitignore                               ← 🚫 Git 제외 규칙 (전역 적용)
+├── GEMINI.md                                ← ⚙️ 워크스페이스 실습 관리 규칙
+├── README.md                                ← 📄 프로젝트 소개 문서
+├── DirectoryStructure.md                    ← 📄 디렉토리 구조 및 변경 이력 기록 (본 문서)
+├── package-lock.json                        ← 루트 패키지 락 파일
+│
+├── notes/                                   ← 📖 강의 자료 및 이론 노트
+│   ├── 2026_빅데이터프레임워크_1.pdf         ← 1회차 수업 PDF 교안
+│   ├── 2026_빅데이터프레임워크_2.pdf         ← 2회차 수업 PDF 교안 (Vue 3 반응성 시스템)
+│   └── 2026_빅데이터프레임워크_3.pdf         ← 3회차 수업 PDF 교안 (Computed/Watch, 폼 바인딩, Vuetify 3)
+│
+├── scripts/                                 ← 🛠️ 워크스페이스 관리 및 자동화 스크립트
+│   └── backup.js                            ← 아카이빙/백업 유틸리티 스크립트
+│
+├── daily_practice/                          ← 📂 날짜별 수업 실습 아카이브
+│   ├── 260821_F/                            ← 🧪 8월 21일 실습 모음
+│   │   ├── 2026-08-21.md                    ← 📝 당일 실습 코드 분석 및 컴포넌트별 정리 문서
+│   │   ├── test.js                          ← JS 기초 테스트
+│   │   └── test1.js                         ← JS 기초 테스트 2
+│   └── 260827_thu/                          ← 🧪 8월 27일 실습 모음
+│       ├── 2026-08-27.md                    ← 📝 당일 실습 코드 분석 및 컴포넌트별 상세 정리 문서
+│       └── *.vue                            ← 당일 실습 .vue 컴포넌트 (총 26개 파일)
+│
+├── exam1/                                   ← 🛠️ Vue 3 + Vite 반응성 심화 실습 프로젝트
+│   ├── index.html                           ← HTML 엔트리 포인트
+│   ├── package.json                         ← 프로젝트 의존성 및 스크립트 설정
+│   ├── package-lock.json
+│   ├── jsconfig.json                        ← JS 프로젝트 설정
+│   ├── vite.config.js                       ← Vite 번들러 설정
+│   ├── README.md                            ← 프로젝트 안내
+│   ├── node_modules/                        ← 프로젝트 종속성 (빌드 모듈)
+│   ├── public/
+│   │   └── favicon.ico                      ← 파비콘
+│   └── src/
+│       ├── main.js                          ← 앱 엔트리 포인트 (createApp)
+│       ├── App.vue                          ← 메인 루트 컴포넌트 (DeepReactivity 연동)
+│       ├── App copy.vue                     ← 루트 컴포넌트 백업본
+│       ├── ButtonCounter.vue                ← 카운터 버튼 컴포넌트
+│       ├── TextInterpolation.vue            ← 텍스트 보간법 컴포넌트
+│       ├── assets/                          ← 정적 리소스 (CSS, 로고 등)
+│       │   ├── base.css
+│       │   ├── main.css
+│       │   └── logo.svg
+│       └── components/                      ← Vue 컴포넌트
+│           ├── RawHTML.vue                  ← 원시 HTML 렌더링 실습
+│           ├── AttrBind1.vue                ← 속성 바인딩 기본 (v-bind, :)
+│           ├── AttrBind2.vue                ← 불리언 속성 바인딩 (:disabled)
+│           ├── AttrBind3.vue                ← 이미지 src 속성 바인딩
+│           ├── AttrBind3_2.vue              ← 이벤트 기반 반응형 이미지 변경
+│           ├── DynaAttr1.vue                ← 동적 인자 바인딩 (:[attributeName])
+│           ├── DynaAttr2.vue                ← 다중 속성 객체 일괄 바인딩 (v-bind="obj")
+│           ├── DynaAttr2_2.vue              ← v-html + 다중 속성 바인딩 응용 1
+│           ├── DynaAttr2_2_1.vue            ← v-html + 다중 속성 바인딩 응용 2
+│           ├── JSExpr.vue                   ← 템플릿 내 JS 표현식 평가
+│           ├── CondRender.vue               ← 조건부 렌더링 기본 (v-if vs v-show)
+│           ├── CondRender2.vue              ← 다중 조건부 렌더링 (v-if, v-else-if, v-else)
+│           ├── EventHandler.vue             ← 이벤트 핸들러 함수 정의 및 호출
+│           ├── RefExam.vue                  ← 🆕 ref() 기본 반응형 상태 실습
+│           ├── RefSetupExam.vue             ← 🆕 <script setup> + ref() 실습
+│           ├── ReactiveFn.vue               ← 🆕 reactive() 객체 반응형 상태 실습
+│           ├── ReactiveReDef.vue            ← 🆕 reactive() 재할당 제약 및 반응성 유지
+│           ├── DeepReactivity.vue           ← 🆕 중첩 객체/배열 깊은 반응성 실습
+│           ├── ReactiveDiff1.vue            ← 🆕 ref vs reactive 기본 동작 비교
+│           ├── ReactiveDiff2.vue            ← 🆕 ref vs reactive 구조분해 및 참조 교체 비교
+│           ├── PseudoRef.vue                ← 🆕 ref의 Getter/Setter 내부 동작 원리
+│           ├── NextTick.vue                 ← 🆕 DOM 비동기 업데이트 큐와 nextTick()
+│           ├── HelloWorld.vue
+│           ├── TheWelcome.vue
+│           ├── WelcomeItem.vue
+│           └── icons/                       ← SVG 아이콘 컴포넌트 (5개)
+│
+└── exam2/                                   ← 🛠️ Vue 3 + Vuetify 3 + TS 실습 프로젝트
+    ├── index.html                           ← HTML 엔트리 포인트
+    ├── package.json                         ← 프로젝트 의존성 (Vuetify, Vue-Router, TS 등)
+    ├── package-lock.json
+    ├── tsconfig.json                        ← TS 기본 설정
+    ├── tsconfig.app.json                    ← 앱 TS 설정
+    ├── tsconfig.node.json                   ← Vite/Node TS 설정
+    ├── vite.config.mts                      ← Vite 번들러 설정 (Vuetify 플러그인 포함)
+    ├── eslint.config.js                     ← ESLint 규칙 설정
+    ├── env.d.ts                             ← TS 환경 선언
+    ├── AGENTS.md                            ← 에이전트 설정 문서
+    ├── README.md                            ← 프로젝트 안내
+    ├── node_modules/                        ← 프로젝트 종속성
+    ├── .vscode/
+    │   └── extensions.json                  ← 권장 VS Code 확장
+    ├── public/
+    │   ├── favicon.ico                      ← 파비콘
+    │   └── layers.css                       ← 스타일 레이어 설정
+    └── src/
+        ├── main.ts                          ← 앱 엔트리 포인트 (Vuetify, Router 플러그인 등록)
+        ├── App.vue                          ← 메인 루트 컴포넌트 (<v-app>, <router-view>)
+        ├── App copy.vue                     ← 루트 컴포넌트 백업본
+        ├── typed-router.d.ts                ← 타입 라우터 선언
+        ├── assets/                          ← 정적 리소스 (로고 등)
+        │   ├── logo.png
+        │   └── logo.svg
+        ├── components/                      ← 공용 컴포넌트
+        │   ├── HelloWorld.vue               ← Vuetify 웰컴 컴포넌트
+        │   ├── MyComponent.vue              ← 단일 루트 엘리먼트 테스트 컴포넌트
+        │   ├── MyMultiComponent.vue         ← 다중 루트 엘리먼트(Fragment) 테스트 컴포넌트
+        │   └── README.md
+        ├── pages/                           ← 라우팅 페이지 및 핵심 문법 실습 컴포넌트
+        │   ├── index.vue                    ← 메인 홈 (HelloWorld)
+        │   ├── ComputedProp.vue             ← 🆕 computed() 계산된 속성 기본
+        │   ├── CachedPropFunc.vue           ← 🆕 computed 캐싱 vs methods 호출 비교
+        │   ├── WritableComputed.vue         ← 🆕 getter/setter를 가진 Writable Computed
+        │   ├── VueList.vue                  ← 🆕 v-for 배열 목록 렌더링
+        │   ├── TodoList.vue                 ← 🆕 v-for 기반 Todo 리스트 실습
+        │   ├── ClassBind.vue                ← 🆕 :class 객체 구문 바인딩
+        │   ├── ArrayClassBind.vue           ← 🆕 :class 배열 구문 및 조건 바인딩
+        │   ├── ClassBindComponent.vue       ← 🆕 컴포넌트 루트 엘리먼트 클래스 바인딩
+        │   ├── StyleBind.vue                ← 🆕 :style 인라인 스타일 객체/배열 바인딩
+        │   ├── TextFormBind.vue             ← 🆕 v-model 텍스트/textarea 입력 바인딩
+        │   ├── CheckboxFormBind.vue         ← 🆕 v-model 체크박스(단일/다중 배열) 바인딩
+        │   ├── RadioSelectFormBind copy.vue ← 🆕 라디오/셀렉트 폼 바인딩 백업
+        │   ├── RadioSelectFormBind_2.vue    ← 🆕 v-model 라디오/드롭다운 셀렉트 바인딩
+        │   ├── VTextFields.vue              ← 🆕 Vuetify v-text-field 폼 바인딩 1
+        │   └── VTextFields_2.vue            ← 🆕 Vuetify v-text-field 폼 바인딩 2
+        ├── plugins/                         ← 플러그인 설정
+        │   ├── index.ts                     ← 플러그인 통합 등록 진입점
+        │   ├── vuetify.ts                   ← Vuetify 인스턴스 생성 및 테마/아이콘 설정
+        │   └── README.md
+        ├── router/                          ← 라우터 설정
+        │   └── index.ts                     ← Vue Router 인스턴스 및 라우팅 설정
+        └── styles/                          ← 스타일 설정
+            ├── settings.scss                ← Vuetify SASS 변수 커스터마이징
+            └── README.md
+```
+
+### 세부 설명 및 실습 내용
+
+1. **`notes/` (이론 강의 교안 누적)**
+   - [`2026_빅데이터프레임워크_2.pdf`](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/notes/2026_빅데이터프레임워크_2.pdf): Vue 3 반응성(Reactivity) 원리, `ref` vs `reactive`, 프록시 기반 상태 추적, `nextTick()`.
+   - [`2026_빅데이터프레임워크_3.pdf`](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/notes/2026_빅데이터프레임워크_3.pdf): `computed` 계산된 속성, 클래스 및 스타일 바인딩, `v-for` 목록 렌더링, `v-model` 폼 바인딩, Vuetify 3 UI 라이브러리 기초.
+
+2. **`scripts/` (워크스페이스 관리 스크립트)**
+   - [`backup.js`](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/scripts/backup.js): 일별 실습 코드 백업 및 아카이빙을 위한 자동화 스크립트.
+
+3. **`exam1/` (Vue 3 반응성 시스템 심화 실습)**
+   - **`RefExam.vue` / `RefSetupExam.vue`**: 원시값/객체 모두 감쌀 수 있는 `ref()` 사용법 및 `<script setup>`에서의 자동 언래핑(`unref`) 실습.
+   - **`ReactiveFn.vue` / `ReactiveReDef.vue`**: `reactive()`를 통한 객체 반응형 상태 생성, 재할당 시 반응성 상실 문제와 객체 속성 갱신을 통한 해결 기법.
+   - **`DeepReactivity.vue`**: 중첩 객체 및 배열 내부 변경 시에도 트리거되는 깊은 반응성(Deep Reactivity) 검증.
+   - **`ReactiveDiff1.vue` / `ReactiveDiff2.vue`**: `ref` vs `reactive`의 타입 제약, 구조 분해 할당(Destructuring) 시 반응성 보존 여부 비교.
+   - **`PseudoRef.vue`**: Vue 내부의 `ref`가 getter/setter 객체 형태로 동작하는 메커니즘 분석.
+   - **`NextTick.vue`**: 상태 변경 후 비동기로 일괄 처리되는 DOM 렌더링 큐와 `nextTick()`을 이용한 업데이트 직후 DOM 접근 실습.
+
+4. **`exam2/` (Vue 3 + Vuetify 3 + Vue Router + TypeScript 신규 프로젝트 구성 및 실습)**
+   - **Computed 속성**:
+     - `ComputedProp.vue`: 종속 대상 반응형 변수 변경 시 자동 재계산되는 기본 `computed()`.
+     - `CachedPropFunc.vue`: 의존성 변경 시에만 재계산되는 Computed 캐싱과 매번 재실행되는 Method 호출의 성능/동작 비교.
+     - `WritableComputed.vue`: get/set 접근자를 정의하여 양방향 읽기/쓰기가 가능한 계산된 속성 실습.
+   - **목록 렌더링 & 동적 바인딩**:
+     - `VueList.vue` / `TodoList.vue`: `v-for`를 이용한 배열 순회 렌더링 및 동적 항목 추가/삭제.
+     - `ClassBind.vue` / `ArrayClassBind.vue`: `:class`에 객체(`{ active: isActive }`) 및 배열(`[classA, classB]`) 형태의 동적 클래스 바인딩.
+     - `ClassBindComponent.vue`: 자식 컴포넌트(`MyComponent`, `MyMultiComponent`)의 Root Element 및 `$attrs`에 클래스 상속 바인딩.
+     - `StyleBind.vue`: `:style`을 활용한 camelCase/kebab-case 인라인 스타일 바인딩.
+   - **폼 입력 바인딩 & Vuetify UI 컴포넌트**:
+     - `TextFormBind.vue`: `v-model`을 활용한 text input 및 textarea 양방향 데이터 바인딩.
+     - `CheckboxFormBind.vue`: 단일 체크박스(boolean) 및 다중 체크박스(배열 수집) 바인딩.
+     - `RadioSelectFormBind_2.vue`: 라디오 버튼(`v-model`) 및 드롭다운 `<select>` 바인딩.
+     - `VTextFields.vue` / `VTextFields_2.vue`: Vuetify 3의 `v-text-field` 컴포넌트와 Vue 3 반응형 상태 연동.
+
+---
+
 ## 🗓️ 2026-08-21 (금)
 
 ### 변경사항 요약

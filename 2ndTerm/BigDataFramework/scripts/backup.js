@@ -14,7 +14,6 @@ function getTodayFolderName() {
 }
 
 const rootDir = path.resolve(__dirname, '..');
-const srcDir = path.join(rootDir, 'exam1', 'src');
 const customFolderName = process.argv[2] || getTodayFolderName();
 const targetDir = path.join(rootDir, 'daily_practice', customFolderName);
 
@@ -23,29 +22,37 @@ if (!fs.existsSync(targetDir)) {
   fs.mkdirSync(targetDir, { recursive: true });
 }
 
-// exam1/src 직속 파일 중 .vue 파일 탐색
-if (!fs.existsSync(srcDir)) {
-  console.error(`❌ 소스 디렉토리를 찾을 수 없습니다: ${srcDir}`);
-  process.exit(1);
-}
-
-const files = fs.readdirSync(srcDir);
-const vueFiles = files.filter(f => f.endsWith('.vue'));
-
-if (vueFiles.length === 0) {
-  console.log('ℹ️  복사할 .vue 파일이 exam1/src 에 없습니다.');
-  process.exit(0);
-}
+// 실습 파일 수집 대상 디렉토리 목록
+const sourceDirs = [
+  path.join(rootDir, 'exam1', 'src'),
+  path.join(rootDir, 'exam1', 'src', 'components'),
+  path.join(rootDir, 'exam2', 'src', 'pages'),
+  path.join(rootDir, 'exam2', 'src', 'components'),
+];
 
 console.log(`📦 [수업기록 백업] 대상 폴더: daily_practice/${customFolderName}`);
 console.log('--------------------------------------------------');
 
-vueFiles.forEach(file => {
-  const srcPath = path.join(srcDir, file);
-  const destPath = path.join(targetDir, file);
-  fs.copyFileSync(srcPath, destPath);
-  console.log(`  ✅ 복사 완료: ${file} -> daily_practice/${customFolderName}/${file}`);
+let totalCopied = 0;
+
+sourceDirs.forEach(srcDir => {
+  if (!fs.existsSync(srcDir)) return;
+
+  const files = fs.readdirSync(srcDir);
+  const targetFiles = files.filter(f => {
+    const stat = fs.statSync(path.join(srcDir, f));
+    return stat.isFile() && (f.endsWith('.vue') || f.endsWith('.js') || f.endsWith('.ts'));
+  });
+
+  targetFiles.forEach(file => {
+    // App.vue, main.js/ts, HelloWorld 등 기본 템플릿 제외 또는 포함
+    const srcPath = path.join(srcDir, file);
+    const destPath = path.join(targetDir, file);
+    fs.copyFileSync(srcPath, destPath);
+    console.log(`  ✅ 복사 완료: ${path.relative(rootDir, srcPath)} -> daily_practice/${customFolderName}/${file}`);
+    totalCopied++;
+  });
 });
 
 console.log('--------------------------------------------------');
-console.log(`✨ 총 ${vueFiles.length}개의 .vue 파일이 성공적으로 백업되었습니다!`);
+console.log(`✨ 총 ${totalCopied}개의 실습 파일이 성공적으로 백업되었습니다!`);
