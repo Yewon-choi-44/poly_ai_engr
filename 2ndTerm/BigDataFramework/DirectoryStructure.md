@@ -11,6 +11,162 @@
 
 ---
 
+## 🗓️ 2026-09-02 (수)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `notes/` - 4회차 강의 자료(`2026_빅데이터프레임워크_4.pdf`) 추가 |
+| ➕ 추가 | `daily_practice/260902_wed/` - 당일 실습 코드 아카이빙 및 상세 실습 정리 문서(`2026-09-02.md`) 작성 |
+| ➕ 추가 | `exam0902/` - Vue 3 + Vuetify 3 + Vue Router + TypeScript 기반의 세 번째 실습 프로젝트 신규 구성 |
+| ➕ 추가 | `exam0902/src/components/BlogPost.vue` - Props 기본 전달 자식 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/BlogPage.vue` - BlogPost 정적 Props 전달 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/pages/BlogPageVFor.vue` - v-for 반복문 연동 Props 전달 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/BlogPostEmit.vue` - 자식 컴포넌트 커스텀 이벤트 발신(`defineEmits`) 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/BlohPageEmit.vue` - 부모 컴포넌트 이벤트 수신 및 동적 상태 변경 페이지 추가 |
+| ➕ 추가 | `exam0902/src/pages/BlogPageEmitStandalone.vue` - 개별 포스트 상태 제어 테스트 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/ChildComp.vue` - Vue 3.4+ `defineModel()` 양방향 바인딩 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/ParentComp.vue` - `ChildComp`와 단일 `v-model` 바인딩 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/ChildCompIn.vue` / `ChildCompIn2.vue` - 전통적 `modelValue` + `update:modelValue` 양방향 바인딩 자식 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/ParentCompIn.vue` / `ParentCompIn2.vue` - 전통적 props/emit 기반 양방향 바인딩 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/ChildCompParam.vue` - 다중 `defineModel('title')`, `defineModel('subtitle')` 자식 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/ParentCompParam.vue` - 다중 `v-model:title`, `v-model:subtitle` 바인딩 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/ChildCompParam2.vue` - 3개 인수(`title`, `subtitle`, `content`) `defineModel` 자식 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/ParentCompParam2.vue` - 3개 인수 `v-model` 바인딩 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/AlertBox.vue` - 기본 `<slot />` 컨텐츠 배포 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/ComponentSlot.vue` - `AlertBox` 슬롯 렌더링 부모 페이지 추가 |
+| ➕ 추가 | `exam0902/src/pages/YesNoQuestion.vue` - `watch` 반응형 감시자 및 fetch API(`https://yesno.wtf/api`) 비동기 연동 페이지 추가 |
+| ➕ 추가 | `exam0902/src/pages/TemplateRef.vue` - DOM 엘리먼트 및 `v-for` 요소 템플릿 참조(`ref`) 실습 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/ChildExpose.vue` - 자식 컴포넌트 `defineExpose` 노출 속성 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/ComponentRef.vue` - 자식 컴포넌트 인스턴스 템플릿 참조 및 메서드 호출 페이지 추가 |
+| ➕ 추가 | `exam0902/src/components/LifeCycleHookComp.vue` - `onMounted`, `onUpdated`, `onUnmounted` 라이프사이클 훅 실습 컴포넌트 추가 |
+| ➕ 추가 | `exam0902/src/pages/LifeCycleHookPage.vue` - 조건부 렌더링(`v-if`)을 통한 라이프사이클 실행 시점 관찰 페이지 추가 |
+| ➕ 추가 | `PracticeFile/` - Vuetify 3 인스타그램 클론 프로젝트 리소스 및 컴포넌트 폴더 추가 |
+| ➕ 추가 | `PracticeFile/pages/Instagram.vue` - Vuetify 3 기반 인스타그램 메인 레이아웃 엔트리 페이지 추가 |
+| ➕ 추가 | `PracticeFile/components/MainNavUnf.vue` - 좌측 내비게이션 Drawer 컴포넌트 추가 |
+| ➕ 추가 | `PracticeFile/components/AppBarUnf.vue` - 상단 검색/액션 AppBar 컴포넌트 추가 |
+| ➕ 추가 | `PracticeFile/components/ProfilePageUnf.vue` - 중앙 메인 피드 그리드 컴포넌트 추가 |
+| ➕ 추가 | `PracticeFile/components/RightNavUnf.vue` - 우측 프로필 정보 Drawer 컴포넌트 추가 |
+| ➕ 추가 | `PracticeFile/assets/` - 인스타그램 로고 및 프로필 이미지 리소스 추가 |
+| 🔧 변경 | `exam2/src/pages/VTextFields_2.vue` - `prepend-inner-icon`을 `mdi-abjad-arabic`으로 변경 |
+| 🔧 변경 | `.gitignore` - 에디터/IDE 임시 파일(`.metadata/`) 제외 항목 추가 |
+| 🔧 변경 | `README.md` - `exam0902/`, `PracticeFile/` 신규 프로젝트 바로가기 링크 최신화 |
+
+### 현재 디렉토리 구조
+
+```text
+BigDataFramework/                            ← 빅데이터프레임워크 워크스페이스 루트
+│
+├── .gitignore                               ← 🚫 Git 제외 규칙 (전역 적용)
+├── GEMINI.md                                ← ⚙️ 워크스페이스 실습 관리 규칙
+├── README.md                                ← 📄 프로젝트 소개 문서
+├── DirectoryStructure.md                    ← 📄 디렉토리 구조 및 변경 이력 기록 (본 문서)
+├── package-lock.json                        ← 루트 패키지 락 파일
+│
+├── notes/                                   ← 📖 강의 자료 및 이론 노트
+│   ├── 2026_빅데이터프레임워크_1.pdf         ← 1회차 수업 PDF 교안
+│   ├── 2026_빅데이터프레임워크_2.pdf         ← 2회차 수업 PDF 교안 (Vue 3 반응성 시스템)
+│   ├── 2026_빅데이터프레임워크_3.pdf         ← 3회차 수업 PDF 교안 (Computed/Watch, 폼 바인딩, Vuetify 3)
+│   └── 2026_빅데이터프레임워크_4.pdf         ← 4회차 수업 PDF 교안 (컴포넌트 심화, Props/Emit, Slot, Lifecycle)
+│
+├── scripts/                                 ← 🛠️ 워크스페이스 관리 및 자동화 스크립트
+│   └── backup.js                            ← 아카이빙/백업 유틸리티 스크립트
+│
+├── daily_practice/                          ← 📂 날짜별 수업 실습 아카이브
+│   ├── 260821_F/                            ← 🧪 8월 21일 실습 모음
+│   │   ├── 2026-08-21.md                    ← 📝 당일 실습 코드 분석 및 컴포넌트별 정리 문서
+│   │   ├── test.js                          ← JS 기초 테스트
+│   │   └── test1.js                         ← JS 기초 테스트 2
+│   ├── 260827_thu/                          ← 🧪 8월 27일 실습 모음
+│   │   ├── 2026-08-27.md                    ← 📝 당일 실습 코드 분석 및 컴포넌트별 상세 정리 문서
+│   │   └── *.vue                            ← 당일 실습 .vue 컴포넌트 (총 26개 파일)
+│   └── 260902_wed/                          ← 🧪 9월 2일 실습 모음
+│       ├── 2026-09-02.md                    ← 📝 당일 실습 코드 분석 및 컴포넌트별 상세 정리 문서
+│       ├── *.vue                            ← 당일 실습 .vue 컴포넌트 (26개)
+│       └── instagram_practice/              ← 📱 인스타그램 UI 실습 파일 및 에셋 아카이브
+│
+├── exam1/                                   ← 🛠️ Vue 3 + Vite 반응성 심화 실습 프로젝트
+│   └── ... (기존 파일 유지)
+│
+├── exam2/                                   ← 🛠️ Vue 3 + Vuetify 3 + TS 실습 프로젝트
+│   └── src/pages/
+│       └── VTextFields_2.vue                ← 🔧 아이콘 속성 수정
+│
+├── exam0902/                                ← 🛠️ [신규] Vue 3 심화 + Vuetify 3 + TS 실습 프로젝트
+│   ├── index.html                           ← HTML 엔트리 포인트
+│   ├── package.json                         ← 프로젝트 의존성 (Vuetify, Vue-Router, TS 등)
+│   ├── vite.config.mts                      ← Vite 번들러 설정
+│   ├── tsconfig.json                        ← TS 설정
+│   └── src/
+│       ├── main.ts                          ← 앱 엔트리 포인트
+│       ├── App.vue                          ← 메인 루트 컴포넌트 (<v-app>, <router-view>)
+│       ├── components/                      ← 재사용 실습 컴포넌트
+│       │   ├── BlogPost.vue                 ← 🆕 Props 기본 정의 컴포넌트
+│       │   ├── BlogPostEmit.vue             ← 🆕 Emit 이벤트 발신 컴포넌트
+│       │   ├── ChildComp.vue                ← 🆕 Vue 3.4+ defineModel 컴포넌트
+│       │   ├── ChildCompIn.vue              ← 🆕 전통적 modelValue + update:modelValue 컴포넌트 1
+│       │   ├── ChildCompIn2.vue             ← 🆕 전통적 modelValue + update:modelValue 컴포넌트 2
+│       │   ├── ChildCompParam.vue           ← 🆕 2개 인수 다중 defineModel 컴포넌트
+│       │   ├── ChildCompParam2.vue          ← 🆕 3개 인수 다중 defineModel 컴포넌트
+│       │   ├── AlertBox.vue                 ← 🆕 기본 <slot /> 컨텐츠 배포 컴포넌트
+│       │   ├── ChildExpose.vue              ← 🆕 defineExpose 자식 속성/메서드 노출 컴포넌트
+│       │   └── LifeCycleHookComp.vue        ← 🆕 onMounted/onUpdated/onUnmounted 라이프사이클 컴포넌트
+│       └── pages/                           ← 라우팅 페이지 컴포넌트
+│           ├── index.vue                    ← 메인 홈
+│           ├── BlogPage.vue                 ← 🆕 BlogPost Props 전달 부모 페이지
+│           ├── BlogPageVFor.vue             ← 🆕 v-for 연동 BlogPost 페이지
+│           ├── BlohPageEmit.vue             ← 🆕 BlogPostEmit 이벤트 수신 부모 페이지
+│           ├── BlogPageEmitStandalone.vue   ← 🆕 개별 폰트 상태 제어 테스트 페이지
+│           ├── ParentComp.vue               ← 🆕 ChildComp defineModel 연동 페이지
+│           ├── ParentCompIn.vue             ← 🆕 ChildCompIn 전통적 v-model 연동 페이지
+│           ├── ParentCompIn2.vue            ← 🆕 ChildCompIn2 전통적 v-model 연동 페이지
+│           ├── ParentCompParam.vue          ← 🆕 ChildCompParam 다중 v-model 연동 페이지
+│           ├── ParentCompParam2.vue         ← 🆕 ChildCompParam2 다중 v-model 연동 페이지
+│           ├── ComponentSlot.vue            ← 🆕 AlertBox 슬롯 렌더링 부모 페이지
+│           ├── YesNoQuestion.vue            ← 🆕 watch 반응형 감시 및 fetch API 연동 페이지
+│           ├── TemplateRef.vue              ← 🆕 DOM/v-for 템플릿 참조(ref) 페이지
+│           ├── ComponentRef.vue             ← 🆕 자식 인스턴스 참조 및 자식 메서드 호출 페이지
+│           └── LifeCycleHookPage.vue        ← 🆕 컴포넌트 라이프사이클 훅 실행 시점 관찰 페이지
+│
+└── PracticeFile/                            ← 📱 [신규] Vuetify 3 인스타그램 레이아웃 클론 실습
+    ├── assets/                              ← 로고 및 프로필 이미지
+    │   ├── instagram_logo.png
+    │   ├── leo_messi.jpg
+    │   └── leo_messi_2.jpg
+    ├── components/                          ← 인스타그램 UI 컴포넌트
+    │   ├── MainNavUnf.vue                   ← 🆕 좌측 사이드바 Drawer (로고, 아바타, 피드 카운터, 메뉴)
+    │   ├── AppBarUnf.vue                    ← 🆕 상단 앱바 (검색창, 새 글 작성 버튼, 알림/메시지 아이콘)
+    │   ├── ProfilePageUnf.vue               ← 🆕 중앙 피드 카드 그리드 (Featured Stories)
+    │   └── RightNavUnf.vue                  ← 🆕 우측 프로필 상세 Drawer (사진, 소개글, 위치)
+    └── pages/
+        └── Instagram.vue                    ← 🆕 인스타그램 메인 종합 레이아웃 엔트리
+```
+
+### 세부 설명 및 실습 내용
+
+1. **`notes/` (이론 강의 교안 누적)**
+   - [`2026_빅데이터프레임워크_4.pdf`](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/notes/2026_빅데이터프레임워크_4.pdf): 컴포넌트 통신(Props/Emit), 양방향 바인딩(`v-model`, `defineModel`), 슬롯(`Slot`), 감시자(`watch`), 템플릿 참조(`Template Refs`, `defineExpose`), 라이프사이클 훅(`Lifecycle Hooks`), Vuetify 종합 레이아웃.
+
+2. **`daily_practice/260902_wed/` (날짜별 실습 및 정리 문서)**
+   - [`2026-09-02.md`](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/daily_practice/260902_wed/2026-09-02.md):
+     - **Props 전달**: `BlogPost.vue` ↔ `BlogPage.vue`, `BlogPageVFor.vue` (`defineProps`)
+     - **커스텀 이벤트**: `BlogPostEmit.vue` ↔ `BlohPageEmit.vue` (`defineEmits`, `$emit`)
+     - **컴포넌트 양방향 바인딩**: `ChildComp.vue` (`defineModel`), `ChildCompIn.vue` (`modelValue`/`update:modelValue`), `ChildCompParam.vue`/`ChildCompParam2.vue` (다중 인자 `defineModel`)
+     - **슬롯(Slot)**: `AlertBox.vue` ↔ `ComponentSlot.vue` (`<slot />`)
+     - **반응형 감시자**: `YesNoQuestion.vue` (`watch` + `fetch API`)
+     - **템플릿 참조 & Expose**: `TemplateRef.vue` (`ref`), `ChildExpose.vue` ↔ `ComponentRef.vue` (`defineExpose`)
+     - **라이프사이클 훅**: `LifeCycleHookComp.vue` ↔ `LifeCycleHookPage.vue` (`onMounted`, `onUpdated`, `onUnmounted`)
+     - **인스타그램 UI 클론**: `Instagram.vue`, `MainNavUnf.vue`, `AppBarUnf.vue`, `ProfilePageUnf.vue`, `RightNavUnf.vue`
+     - **핵심 문법 요약 표 (Key Takeaways)** 수록.
+
+3. **`exam0902/` (Vue 3 + Vuetify 3 + TS 실습 프로젝트)**
+   - 파일 기반 라우팅을 지원하는 Vuetify 3 템플릿 프로젝트를 통해 Vue 3 심화 문법 실습.
+
+4. **`PracticeFile/` (Vuetify 3 인스타그램 레이아웃 클론)**
+   - `<v-app>`, `<v-app-bar>`, `<v-navigation-drawer>`, `<v-avatar>`, `<v-card>`, `<v-img>` 등 Vuetify 3 핵심 레이아웃 컴포넌트를 활용한 반응형 소셜 미디어 웹 UI 구현.
+
+---
+
 ## 🗓️ 2026-08-27 (목)
 
 ### 변경사항 요약

@@ -14,4 +14,6 @@
 - 🧪 [일자별 실습 아카이브 및 정리 문서 (`daily_practice/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/daily_practice/)
 - 🛠️ [Vue 3 기초/반응성 실습 프로젝트 (`exam1/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/exam1/)
 - 🛠️ [Vue 3 + Vuetify 3 + TS 실습 프로젝트 (`exam2/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/exam2/)
+- 🛠️ [Vue 3 심화/컴포넌트 통신/라이프사이클/인스타그램 클론 프로젝트 (`exam0902/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/exam0902/)
+- 📱 [인스타그램 UI 실습 리소스 및 컴포넌트 (`PracticeFile/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/PracticeFile/)
 - 🔧 [자동화 스크립트 폴더 (`scripts/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/scripts/)
