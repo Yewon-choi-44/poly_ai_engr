@@ -1,7 +1,8 @@
 /.metadata/
-/build/
+build/
 /WEB-INF/lib/*.jar
-/.settings/
+.settings/
 Servers/
 /*.class
 /.log
+/JSP0904/
