@@ -11,6 +11,130 @@
 
 ---
 
+## 🗓️ 2026-09-04 (오후 13:35)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `JSP0828/` 프로젝트 — 액션 태그 & JavaBeans 실습 (4장) |
+| ➕ 추가 | `JSP0828/src/main/webapp/` — 15개 JSP 실습 파일 |
+| ➕ 추가 | `JSP0828/src/main/java/dao/` — `Calculator.java`, `Person.java` |
+| 🔧 변경 | `BookMarket/` — 3장(모듈화), 4장(도서목록) 파일 추가 |
+| ➕ 추가 | `BookMarket/src/main/webapp/` — `welcome.jsp`, `menu.jsp`, `footer.jsp`, `books.jsp` |
+| ➕ 추가 | `BookMarket/src/main/java/dto/Book.java` — 도서 DTO (JavaBean) |
+| ➕ 추가 | `BookMarket/src/main/java/dao/BookRepository.java` — 도서 목록 저장소 |
+| 🔧 변경 | 루트 `.gitignore` — 하위 경로 `**/WEB-INF/lib/*.jar` 패턴으로 보강 |
+| ➕ 추가 | `GEMINI.md` — 에이전트 행동 지침 문서 신규 생성 |
+| ➕ 추가 | `notes/2026-08-19.md`, `notes/2026-08-28.md` — 수업 정리 노트 |
+
+### 현재 디렉토리 구조
+
+```
+JSPLecture/                                  ← Eclipse 워크스페이스 루트
+│
+├── .gitignore                               ← ✅ **/WEB-INF/lib/*.jar 등 보강
+├── .project                                 ← 워크스페이스 메타 파일
+├── DirectoryStructure.md                    ← 📄 이 파일
+│
+├── .metadata/                               ← Eclipse 런타임 데이터 (gitignore됨)
+│
+├── JSP0819/                                 ← 1~2장 실습 프로젝트
+│   ├── .classpath / .project / .gitignore
+│   ├── .settings/                           ← Eclipse IDE 설정 (gitignore됨)
+│   ├── build/classes/                       ← 컴파일 결과물 (gitignore됨)
+│   └── src/main/
+│       ├── java/                            ← Java 소스 (비어있음)
+│       └── webapp/
+│           ├── Hello0819.jsp                ← ✅ 첫 번째 JSP 실습
+│           ├── Welcome.jsp                  ← ✅ 쇼핑몰 환영 페이지
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/lib/
+│
+├── JSP0828/                                 ← 🆕 3~4장 실습 프로젝트 (액션 태그 & JavaBeans)
+│   ├── .classpath / .project
+│   ├── .settings/                           ← Eclipse IDE 설정 (gitignore됨)
+│   ├── build/classes/                       ← 컴파일 결과물 (gitignore됨)
+│   └── src/main/
+│       ├── java/dao/
+│       │   ├── Calculator.java              ← ✅ JavaBean — 세제곱 계산
+│       │   └── Person.java                  ← ✅ JavaBean — id/name 프로퍼티
+│       └── webapp/
+│           ├── first.jsp                    ← ✅ jsp:forward 실습
+│           ├── second.jsp                   ← ✅ forward 목적지 (날짜 출력)
+│           ├── firstInclude.jsp             ← ✅ jsp:include 실습
+│           ├── secondInclude.jsp            ← ✅ include 목적지
+│           ├── include.jsp                  ← ✅ include 액션 태그
+│           ├── include_date.jsp             ← ✅ 포함될 날짜 출력 부품
+│           ├── param01.jsp                  ← ✅ jsp:param 파라미터 전달
+│           ├── param01_data.jsp             ← ✅ 파라미터 수신 및 출력
+│           ├── useBean01.jsp                ← ✅ useBean — java.util.Date
+│           ├── useBean02.jsp                ← ✅ useBean — Calculator
+│           ├── useBean03.jsp                ← ✅ useBean — Person (scope=request)
+│           ├── useBean04.jsp                ← ✅ useBean + include 조합
+│           ├── setProperty.jsp              ← ✅ jsp:setProperty
+│           ├── getProperty01.jsp            ← ✅ jsp:getProperty
+│           ├── getProperty02.jsp            ← ✅ setProperty + getProperty 전체 흐름
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/lib/
+│
+├── JSP0904/                                 ← ⏸️ gitignore 처리 중 (추후 공개 예정)
+│
+├── BookMarket/                              ← 📚 누적 메인 프로젝트 (현재: 4장까지 완료)
+│   ├── .classpath / .project / .gitignore
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/
+│       │   ├── dto/
+│       │   │   └── Book.java                ← ✅ [4장] 도서 DTO (JavaBean, Serializable)
+│       │   └── dao/
+│       │       └── BookRepository.java      ← ✅ [4장] 도서 목록 저장소 (하드코딩 3권)
+│       └── webapp/
+│           ├── Welcome0819.jsp              ← ✅ [2장] Bootstrap 적용 시작 페이지
+│           ├── welcome.jsp                  ← ✅ [3장] include 디렉티브로 모듈화
+│           ├── menu.jsp                     ← ✅ [3장] 네비게이션 헤더 부품
+│           ├── footer.jsp                   ← ✅ [3장] 푸터 부품
+│           ├── books.jsp                    ← ✅ [4장] 도서 목록 페이지 (JavaBeans)
+│           ├── META-INF/
+│           └── WEB-INF/lib/
+│
+└── Servers/                                 ← Tomcat 로컬 설정 (gitignore됨)
+    └── Tomcat v9.0 Server at localhost-config/
+        └── tomcat-users.xml                 ← ⚠️ 계정 정보 포함 가능
+```
+
+### .gitignore 현황 (루트)
+```gitignore
+# Eclipse 워크스페이스 메타데이터
+.metadata/
+
+# 컴파일 결과물 (모든 하위 프로젝트 포함)
+build/
+
+# Eclipse IDE 설정
+.settings/
+
+# JAR 라이브러리 (모든 하위 경로)
+**/WEB-INF/lib/*.jar
+
+# Tomcat 서버 설정 (계정 정보 포함 가능)
+Servers/
+
+# 컴파일된 클래스 파일
+*.class
+
+# 로그 파일
+*.log
+
+# 실습 중 임시 제외 프로젝트
+/JSP0904/
+```
+
+> ✅ 이전 패턴(`/WEB-INF/lib/*.jar`)의 `/` prefix 문제를 `**/WEB-INF/lib/*.jar`로 수정하여
+> 모든 하위 프로젝트의 JAR 파일이 올바르게 gitignore 처리됩니다.
+
+---
+
 ## 🗓️ 2026-08-19 (오후 16:00)
 
 ### 변경사항 요약

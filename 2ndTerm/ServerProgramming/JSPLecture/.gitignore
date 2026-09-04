@@ -1,8 +1,23 @@
-/.metadata/
+﻿# Eclipse 워크스페이스 메타데이터
+.metadata/
+
+# 컴파일 결과물 (모든 하위 프로젝트 포함)
 build/
-/WEB-INF/lib/*.jar
+
+# Eclipse IDE 설정
 .settings/
+
+# JAR 라이브러리
+**/WEB-INF/lib/*.jar
+
+# Tomcat 서버 설정 (계정 정보 포함 가능)
 Servers/
-/*.class
-/.log
+
+# 컴파일된 클래스 파일
+*.class
+
+# 로그 파일
+*.log
+
+# 실습 중 임시 제외 프로젝트
 /JSP0904/
