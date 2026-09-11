@@ -11,6 +11,152 @@
 
 ---
 
+## 🗓️ 2026-09-11 (오후 14:47)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `JSP0911/` 프로젝트 — 파일 업로드 실습 (7장) |
+| ➕ 추가 | `JSP0911/src/main/webapp/` — 8개 JSP 파일 (fileupload01~04 + process) |
+| 🔧 변경 | 루트 `.gitignore` — `/JSP0904/` 임시 제외 해제, JSP0904·JSP0911 모두 추적 대상 |
+| ➕ 추가 | `notes/2026-09-04.md` — JSP0904 실습 정리 노트 (5장: 내장 객체) |
+| ➕ 추가 | `notes/2026-09-11.md` — JSP0911 실습 정리 노트 (7장: 파일 업로드) |
+
+### 현재 디렉토리 구조
+
+```
+JSPLecture/                                  ← Eclipse 워크스페이스 루트
+│
+├── .gitignore                               ← ✅ /JSP0904/ 임시 제외 해제 (전 프로젝트 추적)
+├── .project                                 ← 워크스페이스 메타 파일
+├── DirectoryStructure.md                    ← 📄 이 파일
+│
+├── .metadata/                               ← Eclipse 런타임 데이터 (gitignore됨)
+│
+├── JSP0819/                                 ← 1~2장 실습 프로젝트
+│   ├── .classpath / .project / .gitignore
+│   ├── .settings/                           ← Eclipse IDE 설정 (gitignore됨)
+│   ├── build/classes/                       ← 컴파일 결과물 (gitignore됨)
+│   └── src/main/
+│       ├── java/                            ← Java 소스 (비어있음)
+│       └── webapp/
+│           ├── Hello0819.jsp                ← ✅ 첫 번째 JSP 실습
+│           ├── Welcome.jsp                  ← ✅ 쇼핑몰 환영 페이지
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/lib/
+│
+├── JSP0828/                                 ← 3~4장 실습 프로젝트 (액션 태그 & JavaBeans)
+│   ├── .classpath / .project
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/dao/
+│       │   ├── Calculator.java              ← ✅ JavaBean — 세제곱 계산
+│       │   └── Person.java                  ← ✅ JavaBean — id/name 프로퍼티
+│       └── webapp/
+│           ├── first.jsp / second.jsp       ← ✅ jsp:forward 실습
+│           ├── firstInclude.jsp / secondInclude.jsp ← ✅ jsp:include 실습
+│           ├── include.jsp / include_date.jsp
+│           ├── param01.jsp / param01_data.jsp
+│           ├── useBean01~04.jsp             ← ✅ jsp:useBean 실습
+│           ├── setProperty.jsp / getProperty01~02.jsp
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/lib/
+│
+├── JSP0904/                                 ← ✅ 5장 실습 프로젝트 (JSP 내장 객체) — gitignore 해제
+│   ├── .classpath / .project
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/                            ← Java 소스 (비어있음)
+│       └── webapp/
+│           ├── form01.jsp ~ form06.jsp       ← ✅ HTML 폼 태그 실습 (text, password, radio, checkbox, select, textarea)
+│           ├── form04_process.jsp           ← ✅ getParameter() 개별 처리
+│           ├── form05_process.jsp           ← ✅ getParameterValues() 배열 처리
+│           ├── form06_process.jsp           ← ✅ getParameterNames() Enumeration 처리
+│           ├── out01.jsp / out02.jsp / out02_process.jsp ← ✅ out 내장 객체
+│           ├── request.jsp / process.jsp    ← ✅ request 기본 메서드
+│           ├── request01.jsp / request01_process.jsp ← ✅ 로그인 폼 처리
+│           ├── request02.jsp                ← ✅ 요청 헤더 전체 출력
+│           ├── request03.jsp                ← ✅ request 상세 정보 출력
+│           ├── index.jsp / index_process.jsp ← ✅ 체크박스 처리
+│           ├── response.jsp                 ← ✅ sendRedirect (Google)
+│           ├── response01.jsp / response01_process.jsp / response01_success.jsp / response01_failed.jsp ← ✅ 로그인 리다이렉트
+│           ├── response02.jsp               ← ✅ setIntHeader("Refresh", 5)
+│           ├── response03.jsp               ← ✅ sendError(404)
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/lib/
+│
+├── JSP0911/                                 ← 🆕 7장 실습 프로젝트 (파일 업로드)
+│   ├── .classpath / .project
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/                            ← Java 소스 (비어있음)
+│       └── webapp/
+│           ├── fileupload01.jsp             ← ✅ 단일 파일 업로드 폼 (cos.jar)
+│           ├── fileupload01_process.jsp     ← ✅ MultipartRequest 처리 — 파라미터+파일 정보 출력
+│           ├── fileupload02.jsp             ← ✅ 다중 파일(3개) 업로드 폼
+│           ├── fileupload02_process.jsp     ← ✅ 3개 파일 처리 — 결과 테이블 출력
+│           ├── fileupload03.jsp             ← ✅ 단일 파일 폼 (Commons FileUpload)
+│           ├── fileupload03_process.jsp     ← ✅ DiskFileUpload + FileItem 처리
+│           ├── fileupload04.jsp             ← ✅ 텍스트+파일 혼합 폼
+│           ├── fileupload04_process.jsp     ← ✅ isFormField()로 폼/파일 분기 처리
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/lib/                ← cos.jar, commons-fileupload.jar (gitignore됨)
+│
+├── BookMarket/                              ← 📚 누적 메인 프로젝트 (현재: 5장까지 완료)
+│   ├── .classpath / .project / .gitignore
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/
+│       │   ├── dto/Book.java                ← ✅ [4장] 도서 DTO
+│       │   └── dao/BookRepository.java      ← ✅ [4장] 도서 목록 저장소
+│       └── webapp/
+│           ├── Welcome0819.jsp              ← ✅ [2장] Bootstrap 시작 페이지
+│           ├── welcome.jsp                  ← ✅ [3장] 모듈화
+│           ├── menu.jsp / footer.jsp        ← ✅ [3장] 헤더/푸터 부품
+│           ├── books.jsp                    ← ✅ [4장] 도서 목록 페이지
+│           ├── META-INF/
+│           └── WEB-INF/lib/
+│
+└── Servers/                                 ← Tomcat 로컬 설정 (gitignore됨)
+    └── Tomcat v9.0 Server at localhost-config/
+        └── tomcat-users.xml                 ← ⚠️ 계정 정보 포함 가능
+```
+
+### .gitignore 현황 (루트)
+```gitignore
+# Eclipse 워크스페이스 메타데이터
+.metadata/
+
+# 컴파일 결과물 (모든 하위 프로젝트 포함)
+build/
+
+# Eclipse IDE 설정
+.settings/
+
+# JAR 라이브러리
+**/WEB-INF/lib/*.jar
+
+# Tomcat 서버 설정 (계정 정보 포함 가능)
+Servers/
+
+# 컴파일된 클래스 파일
+*.class
+
+# 로그 파일
+*.log
+
+# 실습 완료 프로젝트 - 모두 정상 추적 중
+# JSP0904, JSP0911 추적 대상 (임시 제외 해제: 2026-09-11)
+```
+
+> ✅ `/JSP0904/` 임시 제외 라인 삭제 → JSP0904, JSP0911 모두 Git 추적 대상으로 전환
+
+---
+
 ## 🗓️ 2026-09-04 (오후 13:35)
 
 ### 변경사항 요약
