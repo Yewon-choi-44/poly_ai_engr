@@ -1,1 +1,10 @@
+﻿# Eclipse 빌드 결과물 및 IDE 설정
 /build/
+/.settings/
+/src/main/webapp/WEB-INF/lib/*.jar
+*.class
+*.log
+
+# OS 생성 임시 파일
+Thumbs.db
+Desktop.ini

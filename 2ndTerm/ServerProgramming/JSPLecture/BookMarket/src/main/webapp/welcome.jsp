@@ -29,6 +29,7 @@ pageEncoding="UTF-8"%>
 			<div class = "h-100 p-5">
 				<h3><%= tagline %></h3>
 				<%
+					response.setIntHeader("Refresh", 5);
 					Date day = new java.util.Date();
 					String am_pm;
 					int hour = day.getHours();
@@ -43,7 +44,9 @@ pageEncoding="UTF-8"%>
 					}
 					String CT = hour + ":" + minute + ":" + second + " " + am_pm;
 					out.println("현재 접속 시각: " + CT + "\n");
-				%>
+				%><hr>
+				<p><a href="./books.jsp" class ="btn btn-secondary" role="button">도서 목록 가기 &raquo;</a>
+				<p><a href="./addBook.jsp" class ="btn btn-secondary" role="button">[관리자 메뉴]도서 등록하기 &raquo;</a>
 			</div>
 		</div>
 		<%@include file = "footer.jsp" %>

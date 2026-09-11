@@ -3,11 +3,13 @@
 
 # 컴파일 결과물 (모든 하위 프로젝트 포함)
 build/
+**/build/
 
 # Eclipse IDE 설정
 .settings/
+**/.settings/
 
-# JAR 라이브러리
+# JAR 라이브러리 (모든 하위 경로)
 **/WEB-INF/lib/*.jar
 
 # Tomcat 서버 설정 (계정 정보 포함 가능)
@@ -20,4 +22,4 @@ Servers/
 *.log
 
 # 실습 완료 프로젝트 - 모두 정상 추적 중
-# JSP0904, JSP0911 추적 대상 (임시 제외 해제: 2026-09-11)
+# JSP0819, JSP0828, JSP0904, JSP0911, BookMarket 추적 대상

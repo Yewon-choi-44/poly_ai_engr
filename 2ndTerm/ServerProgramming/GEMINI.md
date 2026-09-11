@@ -30,11 +30,12 @@
 
 ### 문서 위치
 - 날짜별 실습 프로젝트 정리: `notes/YYYY-MM-DD.md` (예: `notes/2026-08-19.md`)
+- BookMarket 프로젝트 정리: `notes/BookMarket.md` (별도 분리된 전용 문서로 누적 기록)
 - 장별 개념 정리 또는 수업 노트: `notes/` 폴더 내에 주제별로 관리
 
 ### 날짜별 정리 문서 필수 포함 항목
 
-1. **실습 파일 목록 및 코드**: 해당 날짜에 작성한 `.jsp`, `.java`, `.js` 파일 전체 코드 및 동작 원리 설명
+1. **실습 파일 목록 및 전체 원본 코드**: 해당 날짜에 작성한 `.jsp`, `.java`, `.js` 파일 등의 요약본이 아닌 **전체 원본 코드(생략 없이 완전한 발췌)** 및 동작 원리 설명
 2. **실행 환경 및 구조**:
    - 프로젝트명 및 Tomcat 배포 경로 (URL 매핑)
    - `web.xml`의 Servlet/Filter 매핑, `<jsp:include>` 모듈화 구조
@@ -42,8 +43,11 @@
    - 스크립트 태그(`<% %>`, `<%! %>`, `<%= %>`), 디렉티브 태그(`page`, `include`, `taglib`)
    - 액션 태그(`jsp:forward`, `jsp:include`, `jsp:useBean` 등)
    - 내장 객체(`request`, `response`, `session`, `out`, `application` 등)
-4. **BookMarket 프로젝트 반영 사항**: 해당 장에서 BookMarket에 추가/변경된 기능 요약
-5. **💡 핵심 문법 정리 표 (Key Takeaways)**: 당일 학습한 JSP/Servlet/Java 주요 개념 요약 표
+4. **💡 핵심 문법 정리 표 (Key Takeaways)**: 당일 학습한 JSP/Servlet/Java 주요 개념 요약 표
+
+> ⚠️ **원칙 준수 사항**:
+> - 날짜별 정리 문서에 코드를 첨부할 때 축약이나 생략 없이 **전체 원본 코드를 발췌하여 첨부**합니다.
+> - **BookMarket 프로젝트 관련 항목**은 날짜별 문서가 아닌 **`notes/BookMarket.md` 등 별도의 분리된 문서에 기록 및 관리**합니다.
 
 ---
 
@@ -122,8 +126,10 @@ JSP{MMDD}/                          ← Eclipse 동적 웹 프로젝트
 ## 7. 수업 노트 및 참고 자료 (`notes/`)
 
 - `notes/server-programming-course-summary.md`: 전체 강의 내용의 장별 요약 (기준 문서, 수정 시 장별 구조 유지)
+- `notes/BookMarket.md`: BookMarket 쇼핑몰 메인 프로젝트 누적 정리 문서 (날짜별 노트와 별도 관리)
 - `notes/ppt_40006/`: 강의 슬라이드 (Ch00~Ch18)
 - `notes/old_ppt/`: 이전 버전 슬라이드
 
 > 새로운 장을 배울 때마다 `server-programming-course-summary.md`의 해당 장 내용을 보강하거나,
 > 별도 날짜별 노트(`notes/YYYY-MM-DD.md`)에 실습 상세 내용을 기록합니다.
+> BookMarket 관련 기능 및 코드는 `notes/BookMarket.md`에 별도로 분리하여 기록합니다.

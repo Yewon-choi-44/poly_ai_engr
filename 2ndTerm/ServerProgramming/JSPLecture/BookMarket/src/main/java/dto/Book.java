@@ -18,8 +18,11 @@ public class Book implements Serializable {
 	private long unitInStock;	// 재고개수
 	private String releaseDate;	// 출판일(월/년)
 	private String condition;	// 신간 or 구판 or 개정판
+	private String filename; 	// 이미지 파일명
 	
 	
+
+
 	public Book() {
 		super();
 	}
@@ -128,4 +131,12 @@ public class Book implements Serializable {
 	}
 
 	
+	public String getFilename() {
+		return filename;
+	}
+	
+	
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
 }
