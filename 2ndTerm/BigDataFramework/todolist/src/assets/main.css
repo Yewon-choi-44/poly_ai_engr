@@ -1,0 +1,66 @@
+.auth-wrapper {
+    min-block-size: calc(var(--vh, 1vh) * 100 - 40px)
+}
+.auth-wrapper .auth-footer-mask {
+    position: absolute;
+    inset-block-end: 0;
+    min-inline-size: 100%
+}
+
+.auth-card {
+    z-index: 1!important
+}
+
+.auth-wrapper .auth-footer-start-tree,.auth-wrapper .auth-footer-end-tree {
+    position: absolute;
+    z-index: 1
+}
+
+.auth-footer-start-tree {
+    inset-block-end: 0;
+    inset-inline-start: 0
+}
+
+.auth-footer-end-tree {
+    inset-block-end: 0;
+    inset-inline-end: 0
+}
+
+.auth-illustration {
+    z-index: 1
+}
+
+.auth-logo {
+    position: absolute;
+    z-index: 1;
+    inset-block-start: 2rem;
+    inset-inline-start: 2.3rem
+}
+
+.auth-bg {
+    background-color: #f4f5fa;
+}
+
+a {
+    color: rgb(var(--v-theme-primary));
+    text-decoration: none
+}
+
+.v-checkbox.v-input,.v-switch.v-input {
+    --v-input-control-height: auto;
+    flex: unset;
+}
+
+.text-base {
+    font-size: 1rem;
+    line-height: 1.5rem
+}
+
+.v-label:not(.v-field-label--floating) {
+    color: rgba(var(--v-theme-on-background),var(--v-medium-emphasis-opacity))
+}
+
+.v-card--variant-elevated,.v-card--variant-flat {
+    background: rgb(var(--v-theme-surface));
+    color: rgba(var(--v-theme-on-surface),var(--v-medium-emphasis-opacity))
+}

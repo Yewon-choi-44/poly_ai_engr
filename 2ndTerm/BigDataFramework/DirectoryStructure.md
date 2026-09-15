@@ -11,6 +11,73 @@
 
 ---
 
+## 🗓️ 2026-09-15 (화)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| 🔧 변경 | `.gitignore` - `todolist` 하위 프로젝트 규칙 및 제외 항목 정리 최신화 |
+| ➕ 추가 | `daily_practice/260915_tue/` - `todolist` 프로젝트 실습 코드 수집 및 아카이빙 |
+| ➕ 추가 | `daily_practice/260915_tue/2026-09-15.md` - `todolist` 프로젝트 상세 코드 분석 및 실습 종합 정리 문서 작성 |
+| ➕ 추가 | `todolist/` - Vue 3 + Vuetify 3 + TypeScript + Axios 기반 Todolist & Slot/i18n 실습 프로젝트 수집 |
+| ➕ 추가 | `todolist/src/components/ToDoList.vue` - 백엔드 REST API 연동 및 ToDo 카드 목록 표시 컴포넌트 |
+| ➕ 추가 | `todolist/src/components/ToDoCard.vue` - `<v-hover>` 범위 슬롯 기반 카드 컴포넌트 |
+| ➕ 추가 | `todolist/src/components/NDateInput.vue` - `<v-dialog>` + `<v-date-picker>` 연동 날짜 선택 컴포넌트 |
+| ➕ 추가 | `todolist/src/pages/CreateToDo.vue` - 신규 ToDo 항목 생성 및 POST 서버 등록 페이지 |
+| ➕ 추가 | `todolist/src/pages/LoginAccount.vue` / `RegisterAccount.vue` / `ProfileAccount.vue` - 사용자 인증 및 회원 관리 UI |
+| ➕ 추가 | `todolist/src/pages/ScopedSlot.vue` / `DynamicSlotName.vue` - Vue 3 범주 및 동적 슬롯 실습 페이지 |
+| 🔧 변경 | `README.md` - `todolist/` 프로젝트 및 `daily_practice/260915_tue/` 아카이브 바로가기 링크 최신화 |
+
+### 현재 디렉토리 구조
+
+```text
+BigDataFramework/                            ← 빅데이터프레임워크 워크스페이스 루트
+│
+├── .gitignore                               ← 🚫 Git 제외 규칙 (todolist 포함 최신화)
+├── GEMINI.md                                ← ⚙️ 워크스페이스 실습 관리 규칙
+├── README.md                                ← 📄 프로젝트 소개 문서 (바로가기 최신화)
+├── DirectoryStructure.md                    ← 📄 디렉토리 구조 및 변경 이력 기록 (본 문서)
+├── package-lock.json                        ← 루트 패키지 락 파일
+│
+├── notes/                                   ← 📖 강의 자료 및 이론 노트
+│   ├── 2026_빅데이터프레임워크_1.pdf
+│   ├── 2026_빅데이터프레임워크_2.pdf
+│   ├── 2026_빅데이터프레임워크_3.pdf
+│   └── 2026_빅데이터프레임워크_4.pdf
+│
+├── scripts/                                 ← 🛠️ 워크스페이스 관리 및 자동화 스크립트
+│   └── backup.js                            ← 아카이빙/백업 유틸리티 스크립트
+│
+├── daily_practice/                          ← 📂 날짜별 수업 실습 아카이브
+│   ├── 260821_F/                            ← 🧪 8월 21일 실습 모음
+│   ├── 260827_thu/                          ← 🧪 8월 27일 실습 모음
+│   ├── 260902_wed/                          ← 🧪 9월 2일 실습 모음
+│   └── 260915_tue/                          ← 🧪 [신규] 9월 15일 todolist 실습 모음
+│       ├── 2026-09-15.md                    ← 📝 todolist 실습 상세 정리 문서
+│       └── *.vue, *.ts                      ← 당일 수집 실습 소스 파일 (35개)
+│
+├── exam1/                                   ← 🛠️ Vue 3 + Vite 반응성 심화 실습 프로젝트
+├── exam2/                                   ← 🛠️ Vue 3 + Vuetify 3 + TS 실습 프로젝트
+├── exam0902/                                ← 🛠️ Vue 3 심화 + Vuetify 3 + TS 실습 프로젝트
+├── PracticeFile/                            ← 📱 Vuetify 3 인스타그램 클론 실습 프로젝트
+│
+└── todolist/                                ← 🛠️ [신규] Vue 3 + Vuetify 3 + Axios Todolist 프로젝트
+    ├── index.html                           ← HTML 엔트리 포인트
+    ├── package.json                         ← todolist 프로젝트 의존성 (Vuetify, Axios, i18n, TS)
+    ├── vite.config.mts                      ← Vite 번들러 설정
+    ├── tsconfig.json                        ← TypeScript 설정
+    └── src/                                 ← Todolist 메인 소스 코드 디렉토리
+        ├── App.vue                          ← 루트 컴포넌트
+        ├── main.ts                          ← 앱 진입 엔트리 스크립트
+        ├── components/                      ← ToDoCard, NDateInput 등 개별 UI 컴포넌트
+        ├── pages/                           ← ToDoList, CreateToDo, LoginAccount 등 파일 기반 라우팅 페이지
+        ├── layouts/                         ← 기본 Vuetify 레이아웃
+        ├── plugins/                         ← Vuetify 3, Vue Router, Vue i18n 설정
+        └── stores/                          ← Pinia / App 스토어
+```
+
+---
+
 ## 🗓️ 2026-09-02 (수)
 
 ### 변경사항 요약
