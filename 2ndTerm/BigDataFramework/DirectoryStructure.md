@@ -9,6 +9,147 @@
 
 <!-- 새 항목은 맨 위에 추가하세요 (최신순) -->
 
+## 🗓️ 2026-09-16 (목)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `flexblog/` — Vue 3 + Vuetify 3 블로그 실습 프로젝트 신규 구성 |
+| ➕ 추가 | `flexblog/src/pages/Home.vue` — 블로그 랜딩 페이지 (이미지, 타이틀, Blog 버튼) |
+| ➕ 추가 | `flexblog/src/components/AppHeader.vue` — `<v-app-bar>` + `v-slot:image` Named Slot 헤더 |
+| ➕ 추가 | `todolist/src/pages/TransitionBasic.vue` — Vue 3 Transition 기초 (fade 클래스 자동 부여) |
+| ➕ 추가 | `todolist/src/pages/CssTransition.vue` — 외부 CSS 라이브러리 클래스 연동 Transition |
+| ➕ 추가 | `todolist/src/pages/CustomTransitionClass.vue` — enter-from/enter-to 클래스 직접 지정 |
+| ➕ 추가 | `todolist/src/pages/TransitionDuration.vue` — `:duration` 진입/퇴장 시간 독립 제어 |
+| ➕ 추가 | `todolist/src/pages/TransitionElements.vue` — `mode="out-in"` 두 요소 교체 전환 |
+| ➕ 추가 | `todolist/src/pages/TransitionHooks.vue` — `:css="false"` + JS Hook 기반 Transition 완전 제어 |
+| ➕ 추가 | `todolist/src/pages/SlideTransition.vue` — translateX 슬라이드 효과 |
+| ➕ 추가 | `todolist/src/pages/NestedTransition.vue` — 중첩 자식 요소 Transition 딜레이 적용 |
+| ➕ 추가 | `todolist/src/pages/TransitionGroupExam1~3.vue` — `<transition-group>` 리스트 FLIP 애니메이션 |
+| ➕ 추가 | `todolist/src/pages/TransitionGsap.vue` — GSAP + JS Hook Transition 연동 |
+| ➕ 추가 | `todolist/src/pages/GsapFromTo.vue` — `gsap.fromTo()` 시작·끝 상태 명시적 지정 |
+| ➕ 추가 | `todolist/src/pages/Gsap404Page.vue` — `gsap.timeline()` 기반 404 페이지 순차 애니메이션 |
+| ➕ 추가 | `todolist/src/pages/NamedScopedSlot.vue` — FancyList #item/#more Named Scoped Slot 심화 실습 |
+| ➕ 추가 | `todolist/src/pages/item.[itemid].vue` — 동적 파라미터 기반 ToDo 상세 페이지 |
+| ➕ 추가 | `daily_practice/260916_Thu/` — todolist 심화 및 flexblog 실습 코드 아카이빙 |
+| 🔧 변경 | `daily_practice/260916_Thu/2026-09-16.md` — Transition/GSAP/Named Scoped Slot/flexblog 전체 코드 포함 상세 정리 문서 재작성 |
+
+### 세부 설명
+
+**todolist 심화 실습** — 이전 회차(260915)에서 Slot, Axios, 계정 관리를 익혔고, 이번 회차에서는 Vue 3 Transition 시스템과 GSAP 애니메이션 라이브러리 연동을 집중 실습하였습니다.
+- `<transition>` / `<transition-group>` CSS 클래스 기반 → JS Hook 기반 → GSAP 연동 단계적 심화
+- `gsap.timeline()`을 활용한 404 페이지 순차 등장 애니메이션 구현
+- `FancyList.vue`의 `v-bind="item"` spread 패턴과 부모의 구조분해 슬롯 소비 패턴 실습
+
+**flexblog 신규 프로젝트** — todolist와 동일한 기술 스택(Vite + Vue 3 + Vuetify 3 + Pinia + i18n + unplugin-vue-router)으로 블로그 형태의 신규 프로젝트를 구성하였습니다.
+- `<v-app-bar>`의 `v-slot:image` Named Slot을 활용한 배경 이미지 그라디언트 오버레이 구현
+- `Home.vue`에서 `@/assets/blog.jpg` 로컬 이미지 및 `to="/postlist"` v-btn 라우팅 적용
+
+### 현재 디렉토리 구조
+
+```text
+BigDataFramework/                            ← 빅데이터프레임워크 워크스페이스 루트
+│
+├── .gitignore                               ← 🚫 Git 제외 규칙 (todolist 포함 최신화)
+├── GEMINI.md                                ← ⚙️ 워크스페이스 실습 관리 규칙
+├── README.md                                ← 📄 프로젝트 소개 문서 (바로가기 최신화)
+├── DirectoryStructure.md                    ← 📄 디렉토리 구조 및 변경 이력 기록 (본 문서)
+├── package-lock.json                        ← 루트 패키지 락 파일
+│
+├── notes/                                   ← 📖 강의 자료 및 이론 노트
+│   ├── 2026_빅데이터프레임워크_1.pdf
+│   ├── 2026_빅데이터프레임워크_2.pdf
+│   ├── 2026_빅데이터프레임워크_3.pdf
+│   └── 2026_빅데이터프레임워크_4.pdf
+│
+├── scripts/                                 ← 🛠️ 워크스페이스 관리 및 자동화 스크립트
+│   └── backup.js                            ← 아카이빙/백업 유틸리티 스크립트
+│
+├── daily_practice/                          ← 📂 날짜별 수업 실습 아카이브
+│   ├── 260821_F/                            ← 🧪 8월 21일 실습 모음
+│   ├── 260827_thu/                          ← 🧪 8월 27일 실습 모음
+│   ├── 260902_wed/                          ← 🧪 9월 2일 실습 모음
+│   ├── 260915_tue/                          ← 🧪 9월 15일 todolist 실습 모음
+│   │   ├── 2026-09-15.md                    ← 📝 todolist 실습 상세 정리 문서
+│   │   └── *.vue, *.ts                      ← 당일 수집 실습 소스 파일 (35개)
+│   └── 260916_Thu/                          ← 🧪 [신규] 9월 16일 todolist 심화 & flexblog 실습 모음
+│       ├── 2026-09-16.md                    ← 📝 Transition/GSAP/Slot/flexblog 실습 상세 정리 문서
+│       ├── todolist/                         ← 당일 기준 todolist 프로젝트 src 스냅샷
+│       └── flexblog/                         ← 당일 기준 flexblog 프로젝트 src 스냅샷
+│
+├── exam1/                                   ← 🛠️ Vue 3 + Vite 반응성 심화 실습 프로젝트
+├── exam2/                                   ← 🛠️ Vue 3 + Vuetify 3 + TS 실습 프로젝트
+├── exam0902/                                ← 🛠️ Vue 3 심화 + Vuetify 3 + TS 실습 프로젝트
+├── PracticeFile/                            ← 📱 Vuetify 3 인스타그램 클론 실습 프로젝트
+│
+├── todolist/                                ← 🛠️ Vue 3 + Vuetify 3 + Axios Todolist 프로젝트
+│   ├── index.html                           ← HTML 엔트리 포인트
+│   ├── package.json                         ← 프로젝트 의존성 (Vuetify, Axios, GSAP, i18n, TS)
+│   ├── vite.config.mts                      ← Vite 번들러 설정
+│   ├── tsconfig.json                        ← TypeScript 설정
+│   └── src/
+│       ├── App.vue                          ← 루트 컴포넌트 (<v-app> + <router-view>)
+│       ├── main.ts                          ← 앱 진입 엔트리 스크립트
+│       ├── components/                      ← 재사용 UI 컴포넌트
+│       │   ├── ToDoList.vue                 ← REST API 연동 ToDo 목록 컴포넌트
+│       │   ├── ToDoCard.vue                 ← <v-hover> Scoped Slot 기반 카드 컴포넌트
+│       │   ├── NDateInput.vue               ← <v-menu>+<v-confirm-edit>+<v-date-picker> 날짜 선택기
+│       │   ├── BaseLayout.vue               ← header/main/footer Named Slot 레이아웃
+│       │   ├── SubmitButton.vue             ← 기본 슬롯 컨텐츠 배포 버튼 컴포넌트
+│       │   └── FanyList.vue                 ← #item/#more Named Scoped Slot 리스트 컴포넌트
+│       ├── pages/                           ← 파일 기반 라우팅 페이지 컴포넌트
+│       │   ├── index.vue                    ← 홈 진입 페이지
+│       │   ├── CreateToDo.vue               ← ToDo 신규 생성 및 POST 등록 페이지
+│       │   ├── LoginAccount.vue             ← 로그인 + 세션 인증 페이지
+│       │   ├── RegisterAccount.vue          ← 회원가입 + multipart/form-data 이미지 업로드
+│       │   ├── ProfileAccount.vue           ← 프로필 조회 및 로그아웃 페이지
+│       │   ├── item.[itemid].vue            ← 동적 파라미터 기반 ToDo 상세 페이지
+│       │   ├── AxiosGet.vue                 ← Axios GET 기초 실습 페이지
+│       │   ├── SlotContent.vue              ← 기본 슬롯 컨텐츠 전달 실습
+│       │   ├── ScopedSlot.vue               ← Scoped Slot 데이터 전달 실습
+│       │   ├── ScopedSlotComponent.vue      ← Scoped Slot 자식 제공자 컴포넌트
+│       │   ├── DynamicSlotName.vue          ← v-slot:[동적이름] 동적 슬롯 실습
+│       │   ├── NamedScopedSlot.vue          ← FancyList Named Scoped Slot 심화 실습
+│       │   ├── NamedSlot.vue                ← Named Slot 기초 실습
+│       │   ├── ParentComponent.vue          ← 슬롯 부모 컴포넌트 실습
+│       │   ├── MyComponent.vue              ← 슬롯 자식 컴포넌트 실습
+│       │   ├── TransitionBasic.vue          ← [신규] Transition 기초 (fade)
+│       │   ├── CssTransition.vue            ← [신규] 외부 CSS 라이브러리 클래스 연동
+│       │   ├── CustomTransitionClass.vue    ← [신규] 커스텀 Transition 클래스 지정
+│       │   ├── TransitionDuration.vue       ← [신규] duration 진입/퇴장 시간 제어
+│       │   ├── TransitionElements.vue       ← [신규] mode="out-in" 요소 교체 전환
+│       │   ├── TransitionHooks.vue          ← [신규] JS Hook 기반 Transition 제어
+│       │   ├── SlideTransition.vue          ← [신규] translateX 슬라이드 Transition
+│       │   ├── NestedTransition.vue         ← [신규] 중첩 자식 요소 Transition 딜레이
+│       │   ├── TransitionGroupExam1.vue     ← [신규] TransitionGroup 리스트 애니메이션 1
+│       │   ├── TransitionGroupExam2.vue     ← [신규] TransitionGroup 리스트 애니메이션 2
+│       │   ├── TransitionGroupExam3.vue     ← [신규] TransitionGroup + FLIP 이동 애니메이션
+│       │   ├── TransitionGsap.vue           ← [신규] GSAP + JS Hook Transition 연동
+│       │   ├── GsapFromTo.vue               ← [신규] gsap.fromTo() 시작·끝 상태 지정
+│       │   ├── Gsap404Page.vue              ← [신규] GSAP timeline 404 페이지 순차 애니메이션
+│       │   └── 404Page.vue                  ← 404 Not Found 기본 페이지
+│       ├── layouts/
+│       │   └── default.vue                  ← 기본 레이아웃 (<router-view> 래퍼)
+│       ├── plugins/                         ← Vuetify, Pinia, i18n, Router 플러그인 설정
+│       └── stores/                          ← Pinia 전역 상태 스토어
+│
+└── flexblog/                                ← 🛠️ [신규] Vue 3 + Vuetify 3 블로그 실습 프로젝트
+    ├── index.html                           ← HTML 엔트리 포인트
+    ├── package.json                         ← 프로젝트 의존성 (Vuetify, Pinia, i18n, TS)
+    ├── vite.config.mts                      ← Vite 번들러 설정
+    ├── tsconfig.json                        ← TypeScript 설정
+    └── src/
+        ├── App.vue                          ← 루트 컴포넌트 (<v-app> + <router-view>)
+        ├── main.ts                          ← 앱 진입 엔트리 스크립트
+        ├── components/
+        │   └── AppHeader.vue                ← <v-app-bar> + v-slot:image Named Slot 헤더
+        ├── pages/
+        │   ├── index.vue                    ← 홈 진입 페이지
+        │   └── Home.vue                     ← 블로그 랜딩 페이지 (이미지 + 타이틀 + 버튼)
+        ├── plugins/                         ← Vuetify, Pinia, i18n, Router 플러그인 설정
+        └── stores/                          ← Pinia 전역 상태 스토어
+```
+
 ---
 
 ## 🗓️ 2026-09-15 (화)
