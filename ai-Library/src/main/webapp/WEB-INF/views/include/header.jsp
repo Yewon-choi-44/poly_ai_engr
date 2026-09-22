@@ -11,6 +11,7 @@
 			<div class="container">
 				<a class="navbar-brand fw-bold" href="/">AITECH 도서관</a>
 				<div class="navbar-nav">
+					<a class="nav-link" href="managementbook">관리자메뉴</a>
 					<a class="nav-link" href="booklist">도서목록</a>
 					<a class="nav-link" href="/loginmember">로그인</a>
 					<a class="nav-link" href="/registermember">회원가입</a>

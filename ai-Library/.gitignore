@@ -4,6 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### 업로드 산출물 (런타임 생성, 실습용 첨부 파일) ###
+upload/
+
 ### STS ###
 .apt_generated
 .classpath
