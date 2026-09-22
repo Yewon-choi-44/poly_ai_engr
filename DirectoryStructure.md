@@ -69,10 +69,13 @@ Spring_2026/
 │               └── AiLibraryApplicationTests.java
 │
 └── daily_practice/                 # 📚 일별 실습 아카이빙 폴더
-    └── 260901_tue/                 # [2026-09-01 화] 실습 아카이브
-        ├── 2026-09-01.md           # 2026-09-01 실습 상세 정리 문서
-        ├── 0901WebTest/            # 0901WebTest JSP 뷰 아카이브 (hello, about, greet, today)
-        └── MiniBookMarket/         # MiniBookMarket 소스 아카이브
+    ├── 260901_tue/                 # [2026-09-01 화] 실습 아카이브
+    │   ├── 2026-09-01.md           # 2026-09-01 실습 상세 정리 문서
+    │   ├── 0901WebTest/            # 0901WebTest JSP 뷰 아카이브 (hello, about, greet, today)
+    │   └── MiniBookMarket/         # MiniBookMarket 소스 아카이브
+    └── 260922_mon/                 # [2026-09-22 월] 실습 아카이브
+        ├── 2026-09-22.md           # 2026-09-22 실습 상세 정리 문서 (MySQL JDBC, DAO, JSTL, Bootstrap)
+        └── ai-Library/             # ai-Library 소스 및 pom.xml 아카이브
 ```
 
 ---
@@ -92,8 +95,9 @@ Spring_2026/
 | ➕ 추가 | `ai-Library/.../views/` | `home.jsp`, `register_book.jsp`, `include/header·footer.jsp`, `book/book_list.jsp`, `user/login·register·modify·find.jsp`, `admin/management_book.jsp` |
 | 🔧 변경 | `GEMINI.md` | Spring_2026 실습 환경 맞춤형 AI 행동 지침으로 전면 재작성 |
 | ➕ 추가 | `daily_practice/260901_tue/2026-09-01.md` | 2026-09-01 Spring MVC 기초 실습 정리 문서 생성 |
-| 🔧 변경 | `DirectoryStructure.md` | ai-Library 프로젝트 구조 반영, 전체 트리 갱신 |
-| 🔧 변경 | `README.md` | ai-Library 및 2026-09-01 실습 문서 바로가기 링크 추가 |
+| ➕ 추가 | `daily_practice/260922_mon/` | 당일 실습 코드 아카이빙(ai-Library) 및 `2026-09-22.md` 학습 정리 문서 생성 |
+| 🔧 변경 | `DirectoryStructure.md` | ai-Library 및 daily_practice 아카이브 구조 반영, 전체 트리 갱신 |
+| 🔧 변경 | `README.md` | ai-Library 및 2026-09-01/2026-09-22 실습 문서 바로가기 링크 추가 |
 
 ---
 

@@ -26,6 +26,7 @@ Spring Boot 4.x 및 Java 웹 개발 수업의 실습 코드와 일별 학습 정
 
 | 일자 | 요일 | 주요 프로젝트 | 핵심 학습 내용 | 상세 문서 |
 | :---: | :---: | :--- | :--- | :---: |
+| **2026-09-22** | 월 | `ai-Library` | - Spring Boot + MySQL JDBC 연동 (`DataSource`, `Connection`, `PreparedStatement`)<br>- DAO 패턴 및 VO 객체 매핑 (`BookDao`, `BookVo`, `BookRowMapper`)<br>- JSTL (`c:forEach`) 도서 목록 렌더링 및 Bootstrap 5 카드 UI<br>- 공통 레이아웃 분리 (`header.jsp`, `footer.jsp`) 및 회원 관리 폼 | [2026-09-22.md](./daily_practice/260922_mon/2026-09-22.md) |
 | **2026-09-01** | 화 | `0901WebTest`<br>`MiniBookMarket` | - Spring Boot 웹 프로젝트 생성 및 Starter 의존성<br>- `@Controller`, `@RequestMapping`, `@RequestParam`<br>- `Model` 인터페이스를 통한 JSP 뷰 데이터 바인딩<br>- JSP View Resolver 및 `tomcat-embed-jasper` 연동 | [2026-09-01.md](./daily_practice/260901_tue/2026-09-01.md) |
 
 ---
