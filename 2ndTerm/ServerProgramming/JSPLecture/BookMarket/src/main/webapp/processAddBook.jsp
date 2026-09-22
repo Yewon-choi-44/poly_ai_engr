@@ -16,7 +16,7 @@
 	request.setCharacterEncoding("UTF-8");
 
 	String filename = "";
-	String realFolder = "C:\\Users\\AI-00\\Desktop\\하이테크_\\2ndTerm\\ServerProgramming\\JSPLecture\\BookMarket\\src\\main\\webapp\\images";
+	String realFolder = "C:\\Users\\AI-00\\Desktop\\하이테크_\\2ndTerm\\ServerProgramming\\JSPLecture\\BookMarket\\src\\main\\webapp\\resources\\images";
 	
 	int maxSize = 5 * 1024 * 1024;
 	String encType = "utf-8";

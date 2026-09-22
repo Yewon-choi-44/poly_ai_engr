@@ -5,7 +5,18 @@
 
 ---
 
-## 0. 프로젝트 개요
+## 0. 작업 시작 전 최우선 점검 — `.gitignore` 및 저장소 범위
+
+어떤 작업이든 시작하기 전에 **가장 먼저** 다음 두 가지를 점검한다.
+
+- **`.gitignore` 최신 상태 확인**: 새로운 실습 프로젝트(`JSP{MMDD}/`)나 설정이 추가될 때, `build/`, `.settings/`, `WEB-INF/lib/*.jar`, `Servers/` 등 빌드 산출물·IDE 메타데이터가 여전히 무시 목록에 걸려 있는지 확인한다. 특히 이 저장소는 과거에 `/JSP0904/` 프로젝트 전체를 임시로 gitignore했다가 나중에 해제한 이력이 있으므로(`JSPLecture/DirectoryStructure.md` 2026-09-11 항목 참고), 새 프로젝트가 의도치 않게 통째로 무시되고 있지 않은지도 함께 확인한다.
+- **저장소 범위 확인**: 이 폴더의 `.git`은 `ServerProgramming/`이나 `2ndTerm/`이 아니라 **훨씬 상위인 `C:\Users\AI-00\Desktop\하이테크_`**에 있다(`git rev-parse --show-toplevel`로 확인 가능). 즉 `2ndTerm/` 아래의 `ComputerVisionLab`, `AIFramework`, `AISystemDevelopmentandOperationsPracticum`뿐 아니라, `하이테크_` 바로 아래의 `AI_DataPreprocessing`, `Database_SQL`, `기계학습프로그래밍`, `웹프로그래밍`, `자바프로그래밍` 등 **다른 학기·다른 과목 폴더까지 전부 같은 git 저장소를 공유**한다. 따라서:
+  - `git status`/`git add`/`git commit` 등은 항상 `ServerProgramming/` 경로로 범위를 제한한다 (예: `git status -- .`, `git add ServerProgramming/...`).
+  - 다른 과목 폴더의 변경 사항(예: `ComputerVisionLab/...`, `자바프로그래밍/...`)은 이 워크스페이스 작업과 무관하므로 손대거나 커밋에 포함하지 않는다.
+
+---
+
+## 1. 프로젝트 개요
 
 - **교재**: 《쉽게 배우는 JSP 웹 프로그래밍(2판)》(송미영 저, 한빛아카데미)
 - **실습 환경**: Eclipse IDE + Apache Tomcat 9.0 + JDK 21 + MySQL 8.0
@@ -14,7 +25,7 @@
 
 ---
 
-## 1. 날짜별 실습 프로젝트 관리 원칙 (`JSPLecture/`)
+## 2. 날짜별 실습 프로젝트 관리 원칙 (`JSPLecture/`)
 
 - 실습 프로젝트 폴더는 `JSPLecture/JSP{MMDD}/` 형식으로 날짜별로 생성합니다.
   - 예: `JSPLecture/JSP0819/`, `JSPLecture/JSP0828/`, `JSPLecture/JSP0904/`
@@ -24,7 +35,7 @@
 
 ---
 
-## 2. 실습 정리 마크다운 문서화
+## 3. 실습 정리 마크다운 문서화
 
 각 날짜 실습 후 아래 형식의 마크다운 문서를 작성합니다.
 
@@ -51,7 +62,7 @@
 
 ---
 
-## 3. 디렉토리 구조 및 변경 이력 누적 (`DirectoryStructure.md`)
+## 4. 디렉토리 구조 및 변경 이력 누적 (`DirectoryStructure.md`)
 
 - `JSPLecture/DirectoryStructure.md`에 변경사항을 날짜순(최신순) 누적 기록합니다.
 - 새로운 실습 프로젝트(`JSPMMDD/`), 파일, 설정이 추가될 때마다 **변경 이력 섹션 최상단**에 새 항목을 추가합니다.
@@ -63,7 +74,7 @@
 
 ---
 
-## 4. Eclipse 프로젝트 구조 이해
+## 5. Eclipse 프로젝트 구조 이해
 
 Eclipse 동적 웹 프로젝트의 표준 구조는 아래와 같습니다. 파일 생성·분류 시 이 구조를 기준으로 합니다.
 
@@ -87,7 +98,7 @@ JSP{MMDD}/                          ← Eclipse 동적 웹 프로젝트
 
 ---
 
-## 5. BookMarket 프로젝트 장별 진화 흐름
+## 6. BookMarket 프로젝트 장별 진화 흐름
 
 `BookMarket/`은 아래 순서로 기능이 누적됩니다. 코드 작성·검토 시 현재 진행된 장 수준의 구현 범위를 유지합니다.
 
@@ -114,16 +125,17 @@ JSP{MMDD}/                          ← Eclipse 동적 웹 프로젝트
 
 ---
 
-## 6. Git 및 저장소 관리
+## 7. Git 및 저장소 관리
 
 - `build/`, `.metadata/`, `.settings/`, `Servers/`, `WEB-INF/lib/*.jar`, `*.class`, `*.log` 등 빌드 결과물 및 IDE 임시 파일이 Git에 추적되지 않도록 `.gitignore`를 항상 준수합니다.
 - `tomcat-users.xml`에는 계정 정보가 포함될 수 있으므로 **절대 커밋하지 않습니다** (`Servers/` 전체를 gitignore).
 - `JSPLecture/DirectoryStructure.md`의 구조 트리와 `.gitignore` 현황을 최신 상태로 유지합니다.
 - MySQL 접속 정보(URL, 계정, 비밀번호)가 포함된 `.java` 또는 `.jsp` 파일은 커밋 전에 확인합니다.
+- 0번 원칙대로, 이 저장소는 `하이테크_` 전체를 아우르는 git 저장소의 일부입니다. 커밋 범위를 `ServerProgramming/`으로 항상 제한하세요.
 
 ---
 
-## 7. 수업 노트 및 참고 자료 (`notes/`)
+## 8. 수업 노트 및 참고 자료 (`notes/`)
 
 - `notes/server-programming-course-summary.md`: 전체 강의 내용의 장별 요약 (기준 문서, 수정 시 장별 구조 유지)
 - `notes/BookMarket.md`: BookMarket 쇼핑몰 메인 프로젝트 누적 정리 문서 (날짜별 노트와 별도 관리)
@@ -133,3 +145,11 @@ JSP{MMDD}/                          ← Eclipse 동적 웹 프로젝트
 > 새로운 장을 배울 때마다 `server-programming-course-summary.md`의 해당 장 내용을 보강하거나,
 > 별도 날짜별 노트(`notes/YYYY-MM-DD.md`)에 실습 상세 내용을 기록합니다.
 > BookMarket 관련 기능 및 코드는 `notes/BookMarket.md`에 별도로 분리하여 기록합니다.
+
+---
+
+## 9. AI 어시스턴트 행동 원칙
+
+- **역할**: 실습 코드(.jsp, .java 등)는 직접 작성·수정하지 않는다. AI의 역할은 `notes/*.md` 작성, `JSPLecture/DirectoryStructure.md` 갱신, `.gitignore` 관리 등 **기록과 정리**로 한정한다. (Spring_2026, ComputerVisionLab 워크스페이스와 동일한 원칙이며, 이 저장소에서 다르게 운영하고 싶다면 언제든 조정 가능하다.)
+- **새 실습 발견 시**: `notes/`나 `DirectoryStructure.md`에 아직 반영되지 않은 날짜별 프로젝트나 파일을 발견하면, 임의로 코드를 고치지 않고 기존 형식(3번, 4번 원칙)에 맞춰 기록하거나 먼저 사용자에게 알린다.
+- **보안**: MySQL 접속 정보, `tomcat-users.xml`의 계정 정보 등 민감 정보는 절대 Git에 커밋하지 않는다.

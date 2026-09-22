@@ -11,6 +11,132 @@
 
 ---
 
+## 🗓️ 2026-09-22 (오후 18:49)
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `JSP0918/` 프로젝트 — 유효성 검사(JavaScript Validation) 실습 (8장) |
+| ➕ 추가 | `JSP0918/src/main/webapp/` — 9개 JSP 파일 (validation01~05 + 02~05 process) |
+| ➕ 추가 | `JSP0918/.gitignore` — 다른 프로젝트와 동일한 표준 패턴으로 신규 생성 (이전까지 누락 상태였음) |
+| 🔧 변경 | `BookMarket/src/main/webapp/` — 정적 리소스 경로를 `css/`, `images/` → `resources/{css,images,js}/`로 재구성 |
+| ➕ 추가 | `BookMarket/src/main/webapp/resources/js/validation.js` — 도서 등록 폼(`addBook.jsp`) 클라이언트 사이드 유효성 검사 (8장 부분 반영) |
+| 🔧 변경 | `BookMarket/src/main/webapp/addBook.jsp` — CSS/JS 경로 변경, 필드 `id` 속성 추가, 제출 버튼을 `submit` → `button`+`onclick="CheckAddBook()"`으로 전환 |
+| 🔧 변경 | `BookMarket/src/main/webapp/processAddBook.jsp` — 이미지 저장 경로를 `webapp/images` → `webapp/resources/images`로 변경, 파라미터명 `unitsInStock` → `unitInStock`으로 수정 |
+| ➕ 추가 | `notes/2026-09-18.md` — JSP0918 실습 정리 노트 (8장: 유효성 검사, 전체 원본 코드 + 동작 원리 + 발견된 이슈) |
+| 🔧 변경 | `notes/BookMarket.md` — 8장(유효성 검사) 진행 현황 반영, 전체 코드 갱신, 마크다운 코드펜스 오류(단일 백틱) 및 표 안 오탈자(`ddBook.jsp` 등) 정정, 발견된 이슈 섹션 신설 |
+| 🔧 변경 | 루트 `.gitignore` 주석 — 추적 대상 프로젝트 목록에 `JSP0918` 추가 |
+
+> ⚠️ 이번 실습에서 클라이언트 검증 스크립트(`validation.js`)와 `processAddBook.jsp`의 파라미터 처리에서 버그 여러 건이 발견되었습니다. 상세 내용은 [`notes/BookMarket.md`](../notes/BookMarket.md)의 "발견된 이슈" 섹션과 [`notes/2026-09-18.md`](../notes/2026-09-18.md)의 동일 섹션 참고. 코드 수정은 진행하지 않았으며 다음 실습 시 확인 필요.
+
+### 현재 디렉토리 구조
+
+```
+JSPLecture/                                  ← Eclipse 워크스페이스 루트
+│
+├── .gitignore                               ← ✅ JSP0918 추적 대상 주석 추가
+├── .project                                 ← 워크스페이스 메타 파일
+├── DirectoryStructure.md                    ← 📄 이 파일
+│
+├── .metadata/                               ← Eclipse 런타임 데이터 (gitignore됨)
+│
+├── JSP0819/                                 ← 1~2장 실습 프로젝트
+├── JSP0828/                                 ← 3~4장 실습 프로젝트 (액션 태그 & JavaBeans)
+├── JSP0904/                                 ← 5장 실습 프로젝트 (JSP 내장 객체)
+├── JSP0911/                                 ← 7장 실습 프로젝트 (파일 업로드)
+│   (위 4개 프로젝트는 이전 항목에서 구조 변경 없음 — 하단 과거 이력 참고)
+│
+├── JSP0918/                                 ← 🆕 8장 실습 프로젝트 (유효성 검사)
+│   ├── .classpath / .project / .gitignore   ← ✅ 오늘 .gitignore 신규 생성 (표준 패턴)
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/                            ← Java 소스 (비어있음)
+│       └── webapp/
+│           ├── validation01.jsp             ← ✅ 검증 없음 — alert로 값 확인만
+│           ├── validation02.jsp             ← ✅ 빈 값(공백) 체크
+│           ├── validation02_process.jsp     ← ✅ 02 제출 처리
+│           ├── validation03.jsp             ← ✅ 길이(자릿수) 체크
+│           ├── validation03_process.jsp     ← ✅ 03 제출 처리
+│           ├── validation04.jsp             ← ✅ 문자 종류(영문/숫자) 체크
+│           ├── validation04_process.jsp     ← ✅ 04 제출 처리
+│           ├── validation05.jsp             ← ✅ 정규식 기반 회원가입 종합 검증
+│           ├── validation05_process.jsp     ← ✅ 05 제출 처리 (전체 필드 출력)
+│           └── META-INF/MANIFEST.MF
+│
+├── BookMarket/                              ← 📚 누적 메인 프로젝트 (현재: 8장 부분 반영)
+│   ├── .classpath / .project / .gitignore
+│   ├── .settings/                           ← gitignore됨
+│   ├── build/classes/                       ← gitignore됨
+│   └── src/main/
+│       ├── java/
+│       │   ├── dto/Book.java                ← ✅ [4장] 도서 DTO
+│       │   └── dao/BookRepository.java      ← ✅ [4장] 도서 목록 저장소
+│       └── webapp/
+│           ├── Welcome0819.jsp              ← ✅ [2장] Bootstrap 시작 페이지
+│           ├── welcome.jsp                  ← ✅ [3장] 모듈화
+│           ├── menu.jsp / footer.jsp        ← ✅ [3장] 헤더/푸터 부품
+│           ├── books.jsp                    ← ✅ [4장] 도서 목록 페이지
+│           ├── book.jsp                     ← ✅ [5장] 도서 상세 정보 페이지
+│           ├── addBook.jsp                  ← 🔧 [6/7/8장] 도서 등록 폼 — 리소스 경로 변경 + 클라이언트 검증 연동
+│           ├── processAddBook.jsp           ← 🔧 [7장] 등록 처리 — 이미지 경로/파라미터명 수정
+│           ├── META-INF/
+│           └── resources/                   ← 🆕 정적 리소스 통합 폴더 (기존 css/, images/ 대체)
+│               ├── css/
+│               │   └── bootstrap.min.css
+│               ├── js/
+│               │   └── validation.js        ← 🆕 [8장] 도서 등록 폼 클라이언트 검증
+│               └── images/
+│                   ├── ISBN1234.jpg / ISBN1235.jpg / ISBN1236.jpg  ← seed 이미지
+│                   ├── ISBN12341234.png     ← 🆕 실습 중 업로드 테스트 이미지
+│                   └── Thumbs.db            ← Windows 캐시 (gitignore됨)
+│
+└── Servers/                                 ← Tomcat 로컬 설정 (gitignore됨)
+    └── Tomcat v9.0 Server at localhost-config/
+        └── tomcat-users.xml                 ← ⚠️ 계정 정보 포함 가능
+```
+
+### .gitignore 현황 (루트)
+```gitignore
+# Eclipse 워크스페이스 메타데이터
+.metadata/
+
+# 컴파일 결과물 (모든 하위 프로젝트 포함)
+build/
+**/build/
+
+# Eclipse IDE 설정
+.settings/
+**/.settings/
+
+# JAR 라이브러리 (모든 하위 경로)
+**/WEB-INF/lib/*.jar
+
+# Tomcat 서버 설정 (계정 정보 포함 가능)
+Servers/
+
+# 컴파일된 클래스 파일
+*.class
+
+# 로그 파일
+*.log
+
+# 실습 완료 프로젝트 - 모두 정상 추적 중
+# JSP0819, JSP0828, JSP0904, JSP0911, JSP0918, BookMarket 추적 대상
+```
+
+### JSP0918 개별 `.gitignore` (신규)
+```gitignore
+# Eclipse 빌드 결과물 및 IDE 설정
+/build/
+/.settings/
+/src/main/webapp/WEB-INF/lib/*.jar
+*.class
+*.log
+```
+
+---
+
 ## 🗓️ 2026-09-11 (오후 20:50)
 
 ### 변경사항 요약

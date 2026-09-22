@@ -1,0 +1,6 @@
+# Eclipse 빌드 결과물 및 IDE 설정
+/build/
+/.settings/
+/src/main/webapp/WEB-INF/lib/*.jar
+*.class
+*.log

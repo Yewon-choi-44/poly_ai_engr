@@ -85,7 +85,7 @@ class KuffersDataLoader(Dataset):
 
 # dataset = KuffersDataLoader('.\data\kuffers\kuffers', transform=train_transform)
 # test_path =  ".data\kuffers\kuffers\TestAll"
-dataset = KuffersDataLoader('.\data\kuffers\kuffers\TrainSet', transform=train_transform)
+dataset = KuffersDataLoader('..\data\kuffers\kuffers\TrainSet', transform=train_transform)
 # train_path = ".data\kuffers\kuffers\TrainSet"
 
 train_size = int(0.8 * len(dataset))

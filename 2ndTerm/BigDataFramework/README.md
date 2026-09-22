@@ -9,12 +9,13 @@
 ## 📌 빠른 바로가기
 
 - 📂 [**전체 디렉토리 구조 및 날짜별 변경 이력 (DirectoryStructure.md)**](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/DirectoryStructure.md)
-- ⚙️ [워크스페이스 실습 관리 규칙 (GEMINI.md)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/GEMINI.md)
+- ⚙️ [워크스페이스 실습 관리 규칙 (AGENTS.md)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/AGENTS.md)
 - 📖 [강의 교안 폴더 (`notes/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/notes/)
 - 🧪 [일자별 실습 아카이브 및 정리 문서 (`daily_practice/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/daily_practice/)
 - 🛠️ [Vue 3 기초/반응성 실습 프로젝트 (`exam1/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/exam1/)
 - 🛠️ [Vue 3 + Vuetify 3 + TS 실습 프로젝트 (`exam2/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/exam2/)
 - 🛠️ [Vue 3 + Vuetify 3 + Axios Todolist & Slot/i18n 실습 프로젝트 (`todolist/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/todolist/)
+- 🛠️ [Vue 3 + Vuetify 3 블로그 실습 프로젝트 (`flexblog/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/flexblog/)
 - 📝 [2026-09-15 실습 상세 정리 문서 (`2026-09-15.md`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/daily_practice/260915_tue/2026-09-15.md)
 - 📱 [인스타그램 UI 실습 리소스 및 컴포넌트 (`PracticeFile/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/PracticeFile/)
 - 🔧 [자동화 스크립트 폴더 (`scripts/`)](file:///C:/Users/AI-00/Desktop/하이테크_/2ndTerm/BigDataFramework/scripts/)
