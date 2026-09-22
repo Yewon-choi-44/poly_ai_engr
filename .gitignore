@@ -1,4 +1,25 @@
-# STS / Eclipse Workspace Metadata
+# ================================================================
+# Spring_2026 — .gitignore
+# ================================================================
+
+# ────────────────────────────────────────
+# 🔐 민감 정보 (절대 커밋 금지)
+# ────────────────────────────────────────
+# DB 접속 정보 (url, username, password)
+db.properties
+**/db.properties
+
+# 환경별 Spring 설정 파일 (운영/개발 분리 시 사용)
+application-local.properties
+application-prod.properties
+application-dev.properties
+**/application-local.properties
+**/application-prod.properties
+**/application-dev.properties
+
+# ────────────────────────────────────────
+# 🏗️ STS / Eclipse Workspace
+# ────────────────────────────────────────
 .metadata/
 bin/
 tmp/
@@ -10,13 +31,21 @@ local.properties
 .loadpath
 .recommenders
 
-# Eclipse project files
+# Eclipse / STS 프로젝트 파일
 .settings/
 .classpath
 .project
+.factorypath
+.springBeans
+.sts4-cache
+.apt_generated
 
-# Maven
+# ────────────────────────────────────────
+# 🔨 Maven 빌드 산출물
+# ────────────────────────────────────────
 target/
+!**/src/main/**/target/
+!**/src/test/**/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -27,25 +56,44 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
-# Gradle
+# ────────────────────────────────────────
+# 🔨 Gradle 빌드 산출물
+# ────────────────────────────────────────
 .gradle/
 build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# IntelliJ IDEA
+# ────────────────────────────────────────
+# 💡 IDE — IntelliJ IDEA
+# ────────────────────────────────────────
 .idea/
 *.iws
 *.iml
 *.ipr
 out/
 
-# VS Code
+# ────────────────────────────────────────
+# 💡 IDE — VS Code
+# ────────────────────────────────────────
 .vscode/
 
-# Spring Boot / Server Logs
+# ────────────────────────────────────────
+# 💡 IDE — NetBeans
+# ────────────────────────────────────────
+/nbproject/private/
+/nbbuild/
+/.nb-gradle/
+
+# ────────────────────────────────────────
+# 🪵 Spring Boot / 서버 로그
+# ────────────────────────────────────────
 *.log
 logs/
 
-# Package / Archive files
+# ────────────────────────────────────────
+# 📦 패키지 / 아카이브
+# ────────────────────────────────────────
 *.jar
 *.war
 *.nar
@@ -54,13 +102,22 @@ logs/
 *.tar.gz
 *.rar
 
-# Node (BigDataFramework Vue/Vite 등)
+# ────────────────────────────────────────
+# 📋 자동 생성 문서 (Spring Initializr)
+# ────────────────────────────────────────
+HELP.md
+
+# ────────────────────────────────────────
+# 🌐 Node / 프론트엔드 (BigDataFramework 등)
+# ────────────────────────────────────────
 node_modules/
 dist/
 dist-ssr/
 *.local
 
-# OS temporary files
+# ────────────────────────────────────────
+# 🖥️ OS 임시 파일
+# ────────────────────────────────────────
 Thumbs.db
 Desktop.ini
 .DS_Store
