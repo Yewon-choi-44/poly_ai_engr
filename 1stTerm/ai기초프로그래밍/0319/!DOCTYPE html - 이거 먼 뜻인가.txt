@@ -1,0 +1,3 @@
+<!DOCTYPE html> - 이거 먼 뜻인가?
+<html lang="ko"> - 언어 지정 안해주면 어케 되는가? 
+<head>
