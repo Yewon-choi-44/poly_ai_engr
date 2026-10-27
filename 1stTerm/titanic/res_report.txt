@@ -1,0 +1,13 @@
+optimal kernel : 
+optimal C : 100
+optimal gamma : 0.01
+final score : [np.float64(0.896551724137931), np.float64(0.9122807017543859), np.float64(0.8387096774193549), np.float64(0.8125)]
+final report : 
+              precision    recall  f1-score   support
+
+           0       0.90      0.91      0.90       114
+           1       0.84      0.81      0.83        64
+
+    accuracy                           0.88       178
+   macro avg       0.87      0.86      0.86       178
+weighted avg       0.88      0.88      0.88       178
