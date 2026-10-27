@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>4. 프런트엔드 개발자 지원서 폼</title>
+    <style>
+        #container {
+            width: 520px;
+            border: 1px solid black;
+            padding: 20px 40px;
+            margin: 0 auto;
+        }
+        fieldset { margin-bottom: 15px; }
+        legend { font-weight:bold; }
+        ul { list-style-type: none; }
+        #바깥{
+            margin-bottom: 20px;
+        }
+        #개인정보 { padding: 5px; 
+            margin-left:30px;
+            margin-top: 10px;
+            margin-bottom:20px;
+            line-height: 30px;
+             }
+        #지원분야 { padding: 5px; 
+            margin-left:10px;
+            margin-top: 5px;
+            margin-bottom:5px;
+            line-height: 30px;
+            }
+        #지원동기 { padding: 5px; 
+            
+            margin-top: 5px;
+            margin-bottom:5px;
+            line-height: 30px;
+            }    
+
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <h1>프런트엔드 개발자 지원서</h1>
+        <p>HTML, CSS, Javascript에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+        <hr>
+
+
+        <form>
+            <dl id="바깥">
+
+                <legend>개인 정보</legend>
+                <dl id="개인정보">
+                    <label for = "r_name"> 이 름 </label>
+                    <input type = "text" id="r-name" placeholder="공백 없이 입력하세요">
+                    <br>
+                    <label for = "r_phone"> 연락처 </label>
+                    <input type = "tel" id="r-phone">
+                    <br>
+                    
+                </dl>
+                
+                <legend>지원 분야</legend>
+                <dl id="지원분야">
+                    <dl id="지원분야">
+                        <input type = "radio" id="web">
+                        <label for = "web">웹 퍼블리싱</label>
+                        <br>
+                        <input type = "radio" id="app">
+                        <label for = "app">웹 애플리케이션 개발</label>
+                        <br>
+                        <input type = "radio" id="engineer">
+                        <label for = "engineer">개발 환경 개선</label>
+                    </dl>    
+                    
+                </dl>
+
+                <legend>지원 동기</legend>
+                <dl id="지원동기">
+                    <textarea cols="60" rows="5" placeholder="본사 지원 동기를 간략히 써 주세요."></textarea>
+                    
+                    <label for = "접수"></label>
+                    <input type = "submit" id="접수" value="접수하기">
+                    <label for = "다시쓰기"></label>
+                    <input type = "reset" id="다시쓰기" value="다시 쓰기">
+                </dl>
+
+            </dl>
+
+        </form>
+    </div>
+</body>
+</html>

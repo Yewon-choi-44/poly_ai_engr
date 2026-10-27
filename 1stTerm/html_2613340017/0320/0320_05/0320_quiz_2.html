@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>연습문제 2</title>
+        <style>
+                #container{
+                    width:520px;
+                    border:1px solid black;
+                    padding: 20px 40px;
+                    margin:0 auto;
+                }
+            fieldset {margin-bottom:15px;}
+            legend {font-weight:bold;}
+                ul{list-style-type:none;}
+                li{line-height:30px;}
+            
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>프런트엔드 개발자 지원서</h1>
+            <p>HTML, CSS, Javascript에 대한 기술적 이해와 경험이 있는 분을 찾습니다.</p>
+            <hr>
+            <form>
+                <fieldset>
+                    <legend>개인 정보</legend>
+                    <ul>
+                        <li>
+                            <label for>이름</label>
+                            <input type="text" name="user_name" autofocus placeholder="공백없이 입력하세요" required>
+                        </li>
+                        <li>
+                            <label for>연락처</label>
+                            <input type="tel" name="user_tel">
+                        </li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <legend>지원 분야</legend>
+                    <ul>
+                        <li>
+                            <input type="radio" name="choice" value="web_publishing">
+                            <label for>웹 퍼블리싱</label>
+                        </li>
+                        <li>
+                            <input type = "radio" name="choice" value="dec_env_upgrade">
+                            <label for>웹 애플리케이션 개발</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="choice" value="dev_env_upgrade">
+                            <label for>개발 환경 개선</label>
+                        </li>
+                    </ul>
+                </fieldset>
+                <fieldset>
+                    <legend>지원 동기</legend>
+                    <textarea name = "motive" id cols="65" rows="5" placeholder="본사 지원 동기를 간략히 써주세요."></textarea>
+                    <input type="submit" name id value="접수하기">
+                    <input type="reset" value="다시 쓰기">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

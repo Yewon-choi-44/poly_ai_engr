@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM event 객체</title>
+    <style>
+        #noa{
+            width: 700px;
+            height: 600px;
+            margin: 100px;
+        }
+      
+            
+    </style>
+</head>
+<body>
+    <div id = "Noa">
+        <img src="C:/Users/AI-00/Downloads/20260515_134815-1.jpg" id="noa">
+        <!-- <div class="box" id="noa"></div> -->
+
+    </div>
+
+    <script>
+        var noa = document.getElementById("noa");
+         noa.addEventListener("mouseout", function(){
+            noa.src = "C:/Users/AI-00/Downloads/20260515_134818-1.jpg";
+        })
+        noa.addEventListener("mouseover",function(){
+            noa.src = "C:/Users/AI-00/Downloads/20260515_134817.jpg";
+        })
+
+        // noa.addEventListener("mouseout", function(){
+            // noa.src = "C:/Users/AI-00/Downloads/20260515_134818-1.jpg";
+        // })
+    </script>
+</body>
+</html>

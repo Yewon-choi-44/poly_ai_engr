@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OR 연산자를 사용해 조건 체크하기</title>
+</head>
+<body>
+    <script>
+        let userNumber1 = parseInt(prompt("50 미만의 숫자를 입력하세요."));
+        let userNumber2 = parseInt(prompt("50 미만의 숫자를 하나 더 입력하세요."));
+        
+        if (userNumber1 || userNumber2 !== null){
+            (userNumber1<10 || userNumber2 <10 ? alert("숫자 두 개 중에서 최소한 하나는 10 미만이군요." ) : alert("숫자 2개 중에서 10 미만인 수는 없습니다."));
+        }
+
+    </script>
+</body>
+</html>
