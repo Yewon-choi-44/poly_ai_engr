@@ -1,0 +1,69 @@
+## 1번
+import torch
+import numpy as np
+
+from sklearn.datasets import fetch_california_housing
+housing = fetch_california_housing()
+
+data = torch.FloatTensor(housing.data)
+data = torch.from_numpy(housing.data)
+
+## 2번
+idx = torch.randperm(len(data))
+torch.manual_seed(100)
+shuffled = data[idx]
+
+# training_X = cal_data의 70%, col = 7
+# training_Y = cal_data의 70%, col = -1
+# test_X = cal_data의 나머지 30%, col = 7
+# test_Y = cal_data의 나머지 30%, col = -1
+
+train_len = int(len(shuffled)* 0.7)
+train_X = shuffled[:train_len,:7]
+train_Y = shuffled[:train_len,-1:]
+test_X = shuffled[train_len:,:7]
+test_Y = shuffled[train_len:,-1:]
+
+
+print(train_X.size())
+print(train_Y.size())
+print(test_X.size())
+print(test_Y.size())
+
+print(shuffled[:1,:])
+print(train_X[:1,:])
+print(train_Y[:1,:])
+
+## 3번
+n = int(len(shuffled)*0.2)
+
+data_1 = shuffled[n*0:n*1,:]
+data_2 = shuffled[n*1:n*2,:]
+data_3 = shuffled[n*2:n*3,:]
+data_4 = shuffled[n*3:n*4,:]
+data_5 = shuffled[n*4:n*5,:]
+
+# print(fold_1.size())
+# print(fold_2.size())
+# print(fold_3.size())
+# print(fold_4.size())
+# print(fold_5.size())
+# print(fold_1[:1,:])
+# print(fold_2[:1,:])
+# print(fold_3[:1,:])
+# print(fold_4[:1,:])
+# print(fold_5[:1,:])
+
+foldList = [data_1,data_2,data_3,data_4,data_5]
+i=0
+j=0
+val = []
+train = []
+
+for i in range(5):
+    # i번째 폴드를 검증 데이터로 사용
+    val = foldList[i]
+    # i번째가 아닌 나머지 폴드들을 합쳐서 학습 데이터로 사용
+    train_list = [foldList[j] for j in range(5) if j != i]
+    train = torch.cat(train_list, dim=0)
+    print(f"Fold {i + 1} -> 검증셋: {val.size()}, 학습셋: {train.size()}")
