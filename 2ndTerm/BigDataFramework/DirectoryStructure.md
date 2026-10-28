@@ -9,6 +9,184 @@
 
 <!-- 새 항목은 맨 위에 추가하세요 (최신순) -->
 
+## 🗓️ 2026-10-27 (화)
+
+> 2026-09-22 이후 진행된 5회차 실습(09-23, 09-30, 10-07, 10-14, 10-21)이 구조 문서에 반영되지 않은 채 쌓여 있어 한꺼번에 정리했습니다. 각 날짜의 실습 소스는 `daily_practice/YYMMDD_wed/`로 복사·수집했고(원본 프로젝트 코드는 수정하지 않음), 날짜별 정리 문서를 새로 작성했습니다.
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `flexblog/src/pages/FlexDisplay.vue` / `FlexDirection.vue` / `FlexWrap.vue` / `FlexJustifyContent.vue` / `FlexAlignContent.vue` / `FlexAlignItems.vue` — [09-23] Flex 컨테이너 속성 인터랙티브 테스터 |
+| ➕ 추가 | `flexblog/src/pages/FlexGrow.vue` / `FlexBasis.vue` / `FlexShrink.vue` — [09-23] Flex 아이템 속성 (FlexShrink는 축소량 공식 계산기 포함) |
+| ➕ 추가 | `flexblog/src/assets/custom.css`, `blog.svg` — [09-23] Flex 테스터 공통 스타일(컨테이너/아이템/baseline/눈금) 및 홈 이미지 |
+| ➕ 추가 | `flexblog/src/pages/FlexAlignSelf.vue` — [09-30] align-self 아이템 개별 정렬 |
+| ➕ 추가 | `flexblog/src/pages/FlexGridJustify.vue` / `FlexBreakpoint.vue` / `FlexPropAlign.vue` / `FlexGridNested.vue` — [09-30] Vuetify 그리드(`v-row`/`v-col`) justify·cols·align·중첩 |
+| 🔧 변경 | `flexblog/src/typed-router.d.ts` — Flex 페이지 14개 추가로 자동 재생성 |
+| ➕ 추가 | `photosnaps/` — [09-30] 인스타그램 스타일 사진 공유 앱 신규 프로젝트 (axios·gsap 추가, Vite `/api` 프록시 → `syntaxwiki.com:9993`) |
+| ➕ 추가 | `photosnaps/src/stores/user.js` — [09-30] Pinia Setup Store (sessionStorage 연동 로그인 상태) |
+| ➕ 추가 | `photosnaps/src/pages/position.vue` — [10-07] CSS position relative/absolute 실습 (`v-number-input`으로 위치 조절) |
+| ➕ 추가 | `photosnaps/src/pages/login.vue` — [10-07] GSAP 타임라인 스크린샷 슬라이드 + 세션/CSRF 로그인 |
+| ➕ 추가 | `photosnaps/src/pages/signup.vue` — [10-07] 회원가입 (클라이언트 검증 + multipart 프로필 사진 업로드) |
+| ➕ 추가 | `photosnaps/src/pages/post.vue` — [10-07] 게시글 작성 + FileReader 미리보기 (작성 중, 문법 오류 있음) |
+| ➕ 추가 | `photosnaps/src/assets/` — [10-07] `custom.css`(휴대폰 프레임·스프라이트 로고), 스크린샷 4장·프레임·로고셋 이미지 |
+| ➕ 추가 | `blog/` — [10-14] 레이아웃(헤더/푸터) + REST API 블로그 프로젝트 신규 생성 |
+| ➕ 추가 | `blog/src/layouts/default.vue`, `components/AppHeader.vue`, `components/AppFooter.vue` — [10-14] 공통 레이아웃 |
+| ➕ 추가 | `blog/src/pages/Home.vue` / `Postlist.vue` / `Postcard.vue` / `item.[itemid].vue` / `Post.vue` — [10-14] 홈·목록·카드·상세·작성 |
+| ➕ 추가 | `blog/2613340017_최예원_src.zip` — [10-14] blog `src/` 폴더 압축본 (35개 파일, 약 27KB) |
+| ➕ 추가 | `simpleblog/` — [10-21] Layouts/Components 플러그인 없는 최소 구성 신규 프로젝트 (스캐폴딩 상태) |
+| ➕ 추가 | `simpleblog/src/layouts/defaults.vue` — [10-26] 빈 레이아웃 파일 |
+| ➕ 추가 | `daily_practice/260923_wed/` ~ `daily_practice/261021_wed/` — 날짜별 실습 소스 수집 폴더 5개 + 정리 문서 5건 (`2026-09-23.md`, `2026-09-30.md`, `2026-10-07.md`, `2026-10-14.md`, `2026-10-21.md`) |
+| 🔧 변경 | `README.md` — 신규 프로젝트(`photosnaps/`, `blog/`, `simpleblog/`) 및 날짜별 정리 문서 바로가기 추가 |
+
+> `.gitignore` 점검: 신규 프로젝트 3개(`photosnaps/`, `blog/`, `simpleblog/`)는 각자 스캐폴딩 `.gitignore`를 갖고 있고, 루트 `.gitignore`의 `node_modules/`, `dist/`, `.vite/`, `*.tsbuildinfo` 규칙으로도 빌드 산출물이 무시됩니다(`git check-ignore`로 `*/node_modules` 확인). 따라서 `.gitignore` 변경은 없습니다. 압축본 `blog/*.zip`은 루트 규칙에 걸리지 않아 추적 대상이며(약 27KB), 제외하고 싶다면 별도 규칙이 필요합니다.
+
+### 세부 설명
+
+**[09-23] Flexbox 속성 테스터 (`flexblog`)** — 노란 컨테이너와 초록 아이템을 두고 `<v-btn-toggle v-model>` → `:style` 바인딩으로 속성값을 바꾸며 레이아웃 변화를 관찰. 컨테이너 속성(display, flex-direction, flex-wrap, justify-content, align-content, align-items) → 아이템 속성(flex-grow, flex-basis, flex-shrink) 순서로 진행. `FlexShrink.vue`는 Template Ref로 컨테이너 실제 폭을 재고(`resize` 리스너) `basis × shrink` 가중치 축소 공식을 화면에 계산해 보여줌.
+
+**[09-30] align-self + Vuetify 그리드 (`flexblog`) / `photosnaps` 생성** — CSS `align-self`를 직접 다룬 뒤, 같은 개념을 Vuetify 그리드 prop(`v-row justify/align`, `v-col cols/align-self`, 중첩 그리드)으로 실습. 같은 날 `photosnaps` 프로젝트를 만들고 axios·gsap 설치, Vite 프록시, Pinia 사용자 스토어까지 구성.
+
+**[10-07] `photosnaps` 페이지 구현** — CSS position(relative/absolute, 가장 가까운 positioned 조상 규칙) 실습 후, 이를 응용해 휴대폰 프레임 위에 스크린샷을 겹쳐 GSAP 타임라인으로 페이드 전환하는 로그인 화면을 구현. 로그인 시 `withCredentials` + Pinia 세션 저장 + `X-CSRFToken` 기본 헤더 설정, 회원가입은 multipart 업로드, 게시글 작성은 FileReader 미리보기.
+
+**[10-14] `blog` 프로젝트** — 레이아웃 시스템으로 헤더·푸터를 공통 적용하고, `/blogposts/` REST API에 GET(목록)/POST(작성, multipart) 연동. `Postlist` → `Postcard`(v-hover + v-overlay) → `item/[itemid]`(동적 라우트 상세) 구조는 todolist(09-15/16)의 ToDoList → ToDoCard → item 구조를 블로그에 응용한 것.
+
+**[10-21] `simpleblog` 생성** — Vuetify 생성기에서 Layouts/Components 기능을 빼고 만든 최소 구성 프로젝트. 페이지 구현은 아직 없음.
+
+> ⚠️ 각 날짜 문서의 "코드 관찰 메모" 섹션에 런타임 오류가 날 수 있는 부분을 기록했습니다(코드는 수정하지 않음). 주요 항목: `photosnaps/src/stores/user.js`의 미정의 `isAuthenticated`, `photosnaps/src/pages/post.vue`의 문법 오류 2건, `blog/src/pages/item.[itemid].vue`의 `items`/`item` 변수명 불일치.
+
+### 현재 디렉토리 구조
+
+```text
+BigDataFramework/                            ← 빅데이터프레임워크 워크스페이스 루트
+│
+├── .gitignore                               ← 🚫 Git 제외 규칙 (node_modules, dist, notes/ 등 — 변경 없음)
+├── AGENTS.md                                ← ⚙️ 워크스페이스 실습 관리 규칙
+├── README.md                                ← 📄 프로젝트 소개 문서 (바로가기 최신화)
+├── DirectoryStructure.md                    ← 📄 디렉토리 구조 및 변경 이력 기록 (본 문서)
+├── package.json / package-lock.json         ← 루트 패키지 파일
+│
+├── notes/                                   ← 📖 강의 교안 PDF (Git 미추적)
+│   ├── 2026_빅데이터프레임워크_1.pdf ~ _5.pdf
+│   ├── 2026_빅데이터프레임워크_6_HGod5Iy.pdf
+│   └── 2026_빅데이터프레임워크_7.pdf, _8.pdf   ← 총 8건
+│
+├── scripts/                                 ← 🛠️ 워크스페이스 관리 및 자동화 스크립트
+│   └── backup.js
+│
+├── daily_practice/                          ← 📂 날짜별 수업 실습 아카이브
+│   ├── 260821_F/                            ← 🧪 8월 21일 실습 모음
+│   ├── 260827_thu/                          ← 🧪 8월 27일 실습 모음
+│   ├── 260902_wed/                          ← 🧪 9월 2일 실습 모음
+│   ├── 260915_tue/                          ← 🧪 9월 15일 todolist 실습 모음
+│   ├── 260916_Thu/                          ← 🧪 9월 16일 todolist 심화 & flexblog 실습 모음
+│   ├── 260923_wed/                          ← 🧪 [신규] 9월 23일 Flexbox 속성 테스터
+│   │   ├── 2026-09-23.md                    ← 📝 Flex 컨테이너/아이템 속성 실습 정리
+│   │   └── flexblog/
+│   │       ├── pages/                       ← Flex*.vue 9개 (Display ~ Shrink)
+│   │       └── assets/                      ← custom.css, blog.svg
+│   ├── 260930_wed/                          ← 🧪 [신규] 9월 30일 align-self·Vuetify 그리드 + photosnaps 생성
+│   │   ├── 2026-09-30.md                    ← 📝 그리드 시스템 + Pinia/프록시 정리
+│   │   ├── flexblog/pages/                  ← FlexAlignSelf, FlexGridJustify, FlexBreakpoint, FlexPropAlign, FlexGridNested
+│   │   └── photosnaps/                      ← package.json, vite.config.mts, stores/user.js
+│   ├── 261007_wed/                          ← 🧪 [신규] 10월 7일 photosnaps 페이지 구현
+│   │   ├── 2026-10-07.md                    ← 📝 position/GSAP 로그인/회원가입/게시글 정리
+│   │   └── photosnaps/                      ← pages/(index, position, login, signup, post), assets/custom.css, router/, typed-router.d.ts
+│   ├── 261014_wed/                          ← 🧪 [신규] 10월 14일 blog 프로젝트
+│   │   ├── 2026-10-14.md                    ← 📝 레이아웃 + REST API 블로그 정리
+│   │   └── blog/                            ← pages/(6), components/(Header, Footer), layouts/default.vue, router/, vite.config.mts, *.d.ts
+│   └── 261021_wed/                          ← 🧪 [신규] 10월 21일 simpleblog 생성
+│       ├── 2026-10-21.md                    ← 📝 최소 구성 프로젝트 정리 (blog와 비교)
+│       └── simpleblog/                      ← App.vue, main.ts, package.json, vite.config.mts, pages/, router/, layouts/defaults.vue
+│
+├── exam1/                                   ← 🛠️ Vue 3 + Vite 반응성 심화 실습 프로젝트
+├── exam2/                                   ← 🛠️ Vue 3 + Vuetify 3 + TS 실습 프로젝트
+├── exam0902/                                ← 🛠️ Vue 3 심화 + Vuetify 3 + TS 실습 프로젝트
+├── PracticeFile/                            ← 📱 Vuetify 3 인스타그램 클론 실습 프로젝트
+├── todolist/                                ← 🛠️ Vue 3 + Vuetify 3 + Axios Todolist 프로젝트 (09-16 이후 변경 없음)
+│
+├── flexblog/                                ← 🛠️ Vue 3 + Vuetify 3 블로그 / Flexbox 실습 프로젝트
+│   └── src/
+│       ├── App.vue / main.ts
+│       ├── assets/
+│       │   ├── custom.css                   ← [신규] Flex 테스터 공통 스타일
+│       │   └── blog.svg                     ← [신규] 홈 이미지
+│       ├── components/AppHeader.vue         ← <v-app-bar> + v-slot:image 헤더
+│       ├── layouts_/                        ← default.vue, blank.vue (폴더명 밑줄 → 레이아웃 미적용)
+│       ├── pages/
+│       │   ├── index.vue / Home.vue         ← 홈
+│       │   ├── FlexDisplay.vue              ← [신규·09-23] display block/flex
+│       │   ├── FlexDirection.vue            ← [신규·09-23] flex-direction
+│       │   ├── FlexWrap.vue                 ← [신규·09-23] flex-wrap
+│       │   ├── FlexJustifyContent.vue       ← [신규·09-23] justify-content
+│       │   ├── FlexAlignContent.vue         ← [신규·09-23] align-content
+│       │   ├── FlexAlignItems.vue           ← [신규·09-23] align-items + baseline 가이드선
+│       │   ├── FlexGrow.vue                 ← [신규·09-23] flex-grow
+│       │   ├── FlexBasis.vue                ← [신규·09-23] flex-basis
+│       │   ├── FlexShrink.vue               ← [신규·09-23] flex-shrink 축소량 계산기
+│       │   ├── FlexAlignSelf.vue            ← [신규·09-30] align-self
+│       │   ├── FlexGridJustify.vue          ← [신규·09-30] v-row justify
+│       │   ├── FlexBreakpoint.vue           ← [신규·09-30] v-col cols 12분할
+│       │   ├── FlexPropAlign.vue            ← [신규·09-30] v-row align / v-col align-self
+│       │   └── FlexGridNested.vue           ← [신규·09-30] 중첩 그리드
+│       ├── plugins/ · router/ · stores/ · styles/
+│       └── typed-router.d.ts                ← 🔧 자동 재생성
+│
+├── photosnaps/                              ← 🛠️ [신규·09-30] 인스타그램 스타일 사진 공유 앱
+│   ├── package.json                         ← + axios, gsap
+│   ├── vite.config.mts                      ← /api → http://syntaxwiki.com:9993 프록시
+│   └── src/
+│       ├── App.vue / main.ts
+│       ├── assets/
+│       │   ├── custom.css                   ← 휴대폰 프레임·스크린샷·스프라이트 로고 스타일
+│       │   ├── home-phones-2x.png           ← 휴대폰 프레임 (약 325KB)
+│       │   ├── screenshot1~4-2x.png         ← 로그인 슬라이드 이미지 4장
+│       │   ├── logo-set.png                 ← 로고 스프라이트
+│       │   └── instagram.png, blog.svg, logo.png, logo.svg
+│       ├── components/HelloWorld.vue
+│       ├── pages/
+│       │   ├── index.vue                    ← 기본 HelloWorld
+│       │   ├── position.vue                 ← [10-07] CSS position 실습
+│       │   ├── login.vue                    ← [10-07] GSAP 슬라이드 + 세션 로그인
+│       │   ├── signup.vue                   ← [10-07] 회원가입 (multipart)
+│       │   └── post.vue                     ← [10-07] 게시글 작성 + 미리보기 (작성 중)
+│       ├── stores/
+│       │   ├── app.ts
+│       │   └── user.js                      ← [09-30] Pinia 사용자 세션 스토어
+│       ├── plugins/ · router/ · styles/
+│       └── typed-router.d.ts
+│
+├── blog/                                    ← 🛠️ [신규·10-14] 레이아웃 + REST API 블로그
+│   ├── 2613340017_최예원_src.zip            ← src 폴더 압축본
+│   ├── vite.config.mts                      ← Layouts() + Components() 플러그인 포함
+│   └── src/
+│       ├── App.vue / main.ts
+│       ├── assets/blog.svg, logo.*
+│       ├── components/
+│       │   ├── AppHeader.vue                ← 그라디언트 앱 바
+│       │   └── AppFooter.vue                ← <v-footer app> 소셜 링크 푸터
+│       ├── layouts/default.vue              ← Header + <v-main><router-view/> + Footer
+│       ├── pages/
+│       │   ├── index.vue / Home.vue         ← 홈 (Blog 버튼 → /postlist)
+│       │   ├── Postlist.vue                 ← GET /blogposts/ 목록
+│       │   ├── Postcard.vue                 ← v-hover + v-overlay 카드
+│       │   ├── item.[itemid].vue            ← /item/:itemid 상세
+│       │   └── Post.vue                     ← POST /blogposts/ 작성 (multipart)
+│       ├── plugins/ · router/ · stores/ · styles/
+│       └── components.d.ts / typed-router.d.ts
+│
+└── simpleblog/                              ← 🛠️ [신규·10-21] 최소 구성 블로그 프로젝트 (스캐폴딩 상태)
+    ├── vite.config.mts                      ← VueRouter + Vue + Vuetify + Fonts (Layouts/Components 없음)
+    └── src/
+        ├── App.vue / main.ts
+        ├── components/HelloWorld.vue
+        ├── layouts/defaults.vue             ← [10-26] 빈 템플릿
+        ├── pages/index.vue                  ← HelloWorld 직접 import
+        ├── plugins/ · router/ · stores/ · styles/
+        └── typed-router.d.ts
+```
+
+---
+
 ## 🗓️ 2026-09-22 (화)
 
 ### 변경사항 요약

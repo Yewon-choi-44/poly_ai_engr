@@ -1,0 +1,58 @@
+.screen {
+    background-image: url('@/assets/home-phones-2x.png');
+    background-size: 468px 634px;
+    height: 581px;
+    width: 382px;
+    background-position: -46px 0;
+    position:relative;
+  }
+  
+  .screen-img {
+    height: 543px;
+    top: 26px;
+    left: 108px;
+    position: absolute;
+    width: 256px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  .screen-img .active {
+    opacity: 1;
+  }
+  
+  .logo {
+    background-image: url('@/assets/logo-set.png');
+    background-position: 0px -2959px;
+    background-size: auto;
+    width: 175px;
+    height: 51px;
+    background-repeat: no-repeat;
+    display: inline-block;
+  }
+
+  .left {
+    flex-basis: 380px;
+    flex-grow: 0;
+  }
+
+  .login-right {
+    height: 380px;
+    width: 350px;
+  }
+
+  .signup-btn {
+    color: blue;
+    opacity: 1;
+    font-weight: 600;
+  }
+
+  .signup-box {
+    width: 350px;
+  }
+
+  .login-btn {
+    color: indigo;
+    opacity: 1;
+    font-weight: 600;
+  }

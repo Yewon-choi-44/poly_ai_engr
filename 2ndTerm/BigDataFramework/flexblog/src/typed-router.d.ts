@@ -38,6 +38,104 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/FlexAlignContent': RouteRecordInfo<
+      '/FlexAlignContent',
+      '/FlexAlignContent',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexAlignItems': RouteRecordInfo<
+      '/FlexAlignItems',
+      '/FlexAlignItems',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexAlignSelf': RouteRecordInfo<
+      '/FlexAlignSelf',
+      '/FlexAlignSelf',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexBasis': RouteRecordInfo<
+      '/FlexBasis',
+      '/FlexBasis',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexBreakpoint': RouteRecordInfo<
+      '/FlexBreakpoint',
+      '/FlexBreakpoint',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexDirection': RouteRecordInfo<
+      '/FlexDirection',
+      '/FlexDirection',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexDisplay': RouteRecordInfo<
+      '/FlexDisplay',
+      '/FlexDisplay',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexGridJustify': RouteRecordInfo<
+      '/FlexGridJustify',
+      '/FlexGridJustify',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexGridNested': RouteRecordInfo<
+      '/FlexGridNested',
+      '/FlexGridNested',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexGrow': RouteRecordInfo<
+      '/FlexGrow',
+      '/FlexGrow',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexJustifyContent': RouteRecordInfo<
+      '/FlexJustifyContent',
+      '/FlexJustifyContent',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexPropAlign': RouteRecordInfo<
+      '/FlexPropAlign',
+      '/FlexPropAlign',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexShrink': RouteRecordInfo<
+      '/FlexShrink',
+      '/FlexShrink',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/FlexWrap': RouteRecordInfo<
+      '/FlexWrap',
+      '/FlexWrap',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/Home': RouteRecordInfo<
       '/Home',
       '/Home',
@@ -61,6 +159,118 @@ declare module 'vue-router/auto-routes' {
     'src/pages/index.vue': {
       routes:
         | '/'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexAlignContent.vue': {
+      routes:
+        | '/FlexAlignContent'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexAlignItems.vue': {
+      routes:
+        | '/FlexAlignItems'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexAlignSelf.vue': {
+      routes:
+        | '/FlexAlignSelf'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexBasis.vue': {
+      routes:
+        | '/FlexBasis'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexBreakpoint.vue': {
+      routes:
+        | '/FlexBreakpoint'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexDirection.vue': {
+      routes:
+        | '/FlexDirection'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexDisplay.vue': {
+      routes:
+        | '/FlexDisplay'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexGridJustify.vue': {
+      routes:
+        | '/FlexGridJustify'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexGridNested.vue': {
+      routes:
+        | '/FlexGridNested'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexGrow.vue': {
+      routes:
+        | '/FlexGrow'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexJustifyContent.vue': {
+      routes:
+        | '/FlexJustifyContent'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexPropAlign.vue': {
+      routes:
+        | '/FlexPropAlign'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexShrink.vue': {
+      routes:
+        | '/FlexShrink'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'src/pages/FlexWrap.vue': {
+      routes:
+        | '/FlexWrap'
       views:
         | never
       pathParamNames:

@@ -1,0 +1,34 @@
+.meal-css-tester-item {
+    margin: 3px;
+    padding: 2px;
+    border: 3px solid currentColor;
+    border-radius: 3px;
+    font-weight: bold;
+    background: #26ab1c;
+    transition: 0.4s;
+}
+
+.meal-css-tester-container {
+    border: 3px solid currentColor;
+    border-radius: 5px;
+    font-size: 1.2em;
+    line-height: 1.4;
+    background: #ffe300;
+    transition: 0.5s;
+}
+
+.baseline {
+    height: 1px;
+    background-color: red;
+    width: 80vw;
+    position: absolute;
+    top: 61px;
+    left: 0;
+}
+
+.v-line {
+    background-image: linear-gradient(to right, black 1px, transparent 1px);
+    background-repeat: repeat;
+    background-size: 20px 100%; /* 10px 간격*/
+    flex-grow: 1;
+}
