@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-<html>
+<html>               
 <head>
 <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
 <script type="text/javascript" src="./resources/js/validation.js"></script>
@@ -18,9 +18,13 @@
       </div>
     </div>
   
-	 <div class="row align-items-md-stretch">	 	
+	<div class="row align-item-md-stretch">
+		<div class="text-end">
+			<a href="?language=ko">Korean</a> | <a href="?language=en">English</a>
+			<a href="logout.jsp" class="btn btn-sm btn-info pull right">logout</a> 
+	</div>
+	 
 		<form name="newBook" action="./processAddBook.jsp" method="post" enctype ="multipart/form-data">
-		
 			
 			<div class="mb-3 row">
 				<label class="col-sm-2">도서코드</label>

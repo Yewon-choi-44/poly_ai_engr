@@ -25,6 +25,10 @@
 | 6장 | 폼 태그 기반 도서 신규 등록 페이지 | addBook.jsp | ✅ 완료 |
 | 7장 | cos.jar(MultipartRequest) 이용 도서 이미지 업로드 | addBook.jsp, processAddBook.jsp | ✅ 완료 |
 | 8장 | 유효성 검사 (자바스크립트) — 도서 등록 폼에 부분 적용 | addBook.jsp, resources/js/validation.js | 🔶 진행 중 (버그 있음, 아래 4·5번 참고) |
+| 9장 | 다국어 처리 — `addBook.jsp`에 Korean/English 전환 링크만 추가 | addBook.jsp | 🔶 진행 중 (JSTL fmt 태그·리소스 번들 미적용) |
+| 10장 | 시큐리티 — `admin` 역할만 도서 등록(`addBook.jsp`) 접근, FORM 로그인·로그아웃 | WEB-INF/web.xml, login.jsp, login_failed.jsp, logout.jsp, addBook.jsp | ✅ 완료 (2026-10-08) |
+
+> 10장은 교재 독립 실습(`JSPLecture/JSP1008/`, [`notes/2026-10-08.md`](./2026-10-08.md) 참고)과 같은 날 BookMarket에도 적용되었습니다. 9장은 교재에서 `addBook.jsp`의 모든 라벨을 `<fmt:message>`로 바꾸고 `bundle/message*.properties`를 만드는 단계까지 가지만, 현재 BookMarket에는 언어 전환 링크(`?language=ko`, `?language=en`)만 들어가 있고 이를 처리하는 코드는 아직 없습니다.
 
 > 8장은 교재의 독립 실습(`JSPLecture/JSP0918/`, [`notes/2026-09-18.md`](./2026-09-18.md) 참고)과 별도로, BookMarket의 `addBook.jsp` 도서 등록 폼에도 클라이언트 사이드 검증이 실제로 통합되었습니다. 로그인/회원가입 폼(`login`, `register` 등)에는 아직 적용되지 않아 "진행 중"으로 표기합니다.
 
@@ -50,8 +54,14 @@ BookMarket/
 │       ├── footer.jsp                  ← [3장] 공통 바닥글 모듈
 │       ├── books.jsp                   ← [4장] 도서 전체 목록 페이지
 │       ├── book.jsp                    ← [5장] 도서 상세 정보 페이지 (request 파라미터)
-│       ├── addBook.jsp                 ← [6/7/8장] 도서 등록 폼 (multipart/form-data + 클라이언트 검증)
+│       ├── addBook.jsp                 ← [6/7/8/9/10장] 도서 등록 폼 (multipart + 클라이언트 검증 + 언어 링크 + 로그아웃 버튼) 🔒 admin 전용
 │       ├── processAddBook.jsp          ← [7장] 도서 등록 처리 (MultipartRequest 파일 업로드)
+│       ├── login.jsp                   ← [10장, 신규] 관리자 FORM 로그인 페이지 (j_security_check)
+│       ├── login_failed.jsp            ← [10장, 신규] 인증 실패 → login.jsp?error=1 리다이렉트
+│       ├── logout.jsp                  ← [10장, 신규] session.invalidate() 후 addBook.jsp로 리다이렉트
+│       ├── WEB-INF/
+│       │   ├── web.xml                 ← [10장, 신규] admin 역할 + /addBook.jsp 보호 + FORM 인증 설정
+│       │   └── lib/                    ← cos.jar 등 (Git 미추적)
 │       └── resources/
 │           ├── css/
 │           │   └── bootstrap.min.css   ← 부트스트랩 CSS (기존 ./css/ 에서 이 경로로 이동)
@@ -567,11 +577,11 @@ pageEncoding="UTF-8"%>
 
 ---
 
-### 📄 src/main/webapp/addBook.jsp — 6/7/8장 도서 등록 폼 (파일 업로드 + 클라이언트 검증, 최신)
+### 📄 src/main/webapp/addBook.jsp — 6/7/8/9/10장 도서 등록 폼 (파일 업로드 + 클라이언트 검증 + 언어 링크 + 로그아웃, 최신 2026-10-08)
 
 ```jsp
 <%@ page contentType="text/html; charset=utf-8"%>
-<html>
+<html>               
 <head>
 <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
 <script type="text/javascript" src="./resources/js/validation.js"></script>
@@ -590,9 +600,13 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
   
-	 <div class="row align-items-md-stretch">	 	
+	<div class="row align-item-md-stretch">
+		<div class="text-end">
+			<a href="?language=ko">Korean</a> | <a href="?language=en">English</a>
+			<a href="logout.jsp" class="btn btn-sm btn-info pull right">logout</a> 
+	</div>
+	 
 		<form name="newBook" action="./processAddBook.jsp" method="post" enctype ="multipart/form-data">
-		
 			
 			<div class="mb-3 row">
 				<label class="col-sm-2">도서코드</label>
@@ -684,6 +698,10 @@ pageEncoding="UTF-8"%>
   - `<script src="./resources/js/validation.js">`로 검증 스크립트를 로드하고, 제출 버튼이 `type="submit"` → `type="button" onclick="CheckAddBook()"`로 바뀌어, **검증 함수가 `true`를 반환(=`document.newBook.submit()` 호출)할 때만 실제 제출**되는 구조로 전환되었습니다.
   - `bookId`, `name`, `unitPrice`, `description`, `unitInStock` 필드에 `id` 속성이 새로 추가되었습니다. `validation.js`가 `getElementById()`로 값을 읽기 위한 것입니다.
   - 필드명이 `unitsInStock`(복수형, 6/7장 당시) → `unitInStock`(단수형, `Book.java`의 실제 프로퍼티명과 일치)으로 수정되었고, 이미지 필드명도 `BookImage` → `bookImage`(소문자 시작)로 정리되었습니다.
+- **동작 원리 (9/10장, 2026-10-08 변경분)**:
+  - 폼 위에 오른쪽 정렬(`text-end`) 영역을 두고 **언어 전환 링크** `?language=ko` / `?language=en`을 추가했습니다(9장). 링크는 현재 페이지에 `language` 파라미터만 붙여 다시 요청하며, 이를 읽어 `<fmt:setLocale>`로 바꾸는 코드는 아직 없습니다.
+  - **로그아웃 버튼** `logout.jsp`를 추가했습니다(10장). 이 페이지 자체는 `web.xml`에서 `admin` 역할만 접근하도록 보호되므로, 처음 열면 `login.jsp`가 먼저 표시됩니다.
+  - 기존 `<div class="row align-items-md-stretch">`가 `align-item-md-stretch`(s 빠짐)로 바뀌었습니다(5번 이슈). 새로 연 `<div class="text-end">`의 닫는 태그는 들여쓰기만 어긋나 있을 뿐 짝은 맞습니다.
 
 ---
 
@@ -856,6 +874,135 @@ function CheckAddBook() {
 
 ---
 
+### 📄 src/main/webapp/WEB-INF/web.xml — [10장, 신규 2026-10-08] 관리자 보안 설정
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<security-role>
+		<description></description>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-constraint>
+		<display-name>BookMarket Security</display-name>
+		<web-resource-collection>
+			<web-resource-name>BookMarket</web-resource-name>
+			<description></description>
+			<url-pattern>/addBook.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>권한 관리자명</description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/login_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+</web-app>
+```
+
+- **동작 원리**:
+  - `admin` 역할을 선언하고 `/addBook.jsp`(도서 등록)를 `admin` 역할 사용자만 열 수 있게 보호합니다. `<http-method>`를 지정하지 않았으므로 GET·POST 등 **모든 메서드**가 보호됩니다(JSP1008은 GET만 보호).
+  - 미인증 상태로 `addBook.jsp`를 요청하면 Tomcat이 `/login.jsp`를 보여주고, 인증 실패 시 `/login_failed.jsp`로 보냅니다.
+  - `admin` 사용자·역할은 Tomcat의 `tomcat-users.xml`(`Servers/`, Git 미추적)에 정의되어 있어야 합니다.
+  - 등록 처리 페이지 `processAddBook.jsp`는 보호 대상에 포함되어 있지 않습니다.
+
+---
+
+### 📄 src/main/webapp/login.jsp — [10장, 신규 2026-10-08] 관리자 로그인 페이지
+
+```jsp
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css"/>
+<title>Login</title>
+</head>
+<body>
+	<div class="container py-4">
+		<%@ include file="menu.jsp" %>
+		
+		<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+			<div class="container-fluid py-5">
+				<h1 class="display-5 fw-bold">로그인</h1>
+				<p class="col-md-8 fs-4">Login</p>
+			</div>
+		</div>
+	
+	<div class="row align-items-md-stretch text-center">
+		<div class="row justify-content-center align-items-center">
+			<div class="h-100 p-5 col-md-6">
+				<h3>Please sign in</h3>
+				<%
+					String error = request.getParameter("error");
+					if (error!=null) {
+						out.println("<div class='alert alert-danger'>");
+						out.println("아이디와 비밀번호를 확인해 주세요.");
+						out.println("</div>");
+					}
+				%>
+				<form class="form-signin" action="j_security_check" method="post">
+					<div class="form-floating mb-3 row">
+						<input type="text" class="form-control" name='j_username' required autofocus>
+						<label for="floatingInput">ID</label>
+					</div>
+					<div class="form-floating mb-3 row">	
+						<input type="password" class="form-control" name='j_password'>
+						<label for="floatingInput">Password</label>
+					</div>
+					<button class="btn btn-lg btn-info" type="submit">로그인</button>
+				</form>
+			</div>
+		</div>
+	</div>
+		<%@ include file="footer.jsp" %>
+</div>
+</body>
+</html>
+```
+
+- **동작 원리**:
+  - 다른 BookMarket 페이지와 같은 레이아웃(`menu.jsp` include + 점보트론 + `footer.jsp` include)에 Bootstrap 5 **floating label** 로그인 폼을 넣었습니다.
+  - FORM 인증 예약어 `action="j_security_check"`, `name='j_username'`, `name='j_password'`를 사용 → Tomcat이 인증 처리
+  - `error` 파라미터가 있으면(= `login_failed.jsp`에서 `?error=1`로 돌아온 경우) 스크립틀릿에서 `out.println()`으로 Bootstrap `alert-danger` 경고 상자를 출력
+  - `required autofocus`: HTML5 필수 입력 + 페이지 열릴 때 커서 자동 위치
+  - 바닥글을 `<jsp:include>`가 아닌 `<%@ include file %>` 디렉티브로 포함(정적 포함) — `addBook.jsp`는 `<jsp:include page="footer.jsp" />`(동적 포함)를 사용
+
+---
+
+### 📄 src/main/webapp/login_failed.jsp — [10장, 신규 2026-10-08] 인증 실패 처리
+
+```jsp
+<%
+	response.sendRedirect("login.jsp?error=1");
+%>
+```
+
+- **동작 원리**: 별도 화면 없이 `response.sendRedirect()`로 로그인 페이지에 `error=1` 파라미터를 붙여 되돌려 보냅니다 → 사용자는 같은 로그인 화면에서 경고 메시지를 보게 됩니다.
+
+---
+
+### 📄 src/main/webapp/logout.jsp — [10장, 신규 2026-10-08] 로그아웃
+
+```jsp
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<% 
+	session.invalidate();
+	response.sendRedirect("addBook.jsp");
+%>
+```
+
+- **동작 원리**:
+  - FORM 인증 정보는 **세션**에 저장되므로 `session.invalidate()`로 세션을 없애면 로그아웃됩니다.
+  - 곧바로 보호 페이지 `addBook.jsp`로 리다이렉트 → 인증 정보가 없으므로 Tomcat이 다시 `login.jsp`를 보여줍니다(로그아웃이 됐는지 바로 확인 가능).
+
+---
+
 ## 5. ⚠️ 발견된 이슈 (다음 실습 시 확인/수정 필요)
 
 | 위치 | 증상 | 원인 |
@@ -864,6 +1011,10 @@ function CheckAddBook() {
 | `validation.js` `CheckAddBook()` | 재고 수 체크가 "가격이 소수점 둘째 자리를 초과했을 때"만 실행됨 | 가격 검증부의 `else if (!check(...)) \n //return false;` 에서 `if`에 딸린 실행문이 없고(주석 처리됨), 그 아래 빈 줄을 건너뛰어 **바로 다음의 `if (isNaN(unitsInStock.value)) {...}` 블록 전체가 이 `else if`에 종속**됩니다. 즉 가격이 정상(else if 조건이 거짓)이면 재고 수 검증 자체가 통째로 스킵되고, 가격 정규식이 실패했을 때만 재고 수 검증이 실행되는 의도치 않은 흐름입니다 |
 | `processAddBook.jsp` | `unitPrice`나 `unitInStock` 파라미터가 폼에서 전달되지 않는 경우(`null`) 500 에러(NullPointerException) | 기존에 있던 `unitPrice == null` / `unitInStock == null` 널 체크가 이번 수정에서 빠지고 `unitPrice.isEmpty()` / `unitInStock.isEmpty()`만 남음. `MultipartRequest.getParameter()`가 `null`을 반환하는 상황이면 `.isEmpty()` 호출 자체에서 예외 발생 |
 | `resources/images/` | 실습 중 생성된 테스트 업로드 파일(`ISBN12341234.png`)이 seed 이미지(`ISBN1234.jpg` 등)와 섞여 있음 | 기능 테스트 산출물로 보이며, 필요 없다면 정리 대상 |
+| `addBook.jsp` (9장) | Korean/English 링크를 눌러도 화면 언어가 바뀌지 않음 | `language` 파라미터를 읽어 `<fmt:setLocale>`/`<fmt:bundle>`로 처리하는 코드와 리소스 번들(`message*.properties`)이 아직 없음 (교재 9장 BookMarket 단계 미진행) |
+| `addBook.jsp` (10장 변경분) | 행 정렬 클래스가 적용되지 않음 | `align-items-md-stretch` → `align-item-md-stretch`로 `s`가 빠짐. 로그아웃 버튼의 `pull right`는 Bootstrap 3의 `pull-right`를 띄어 쓴 형태라 효과 없음 (Bootstrap 5에서는 `float-end`) |
+| `web.xml` (10장) | 로그인 없이도 `processAddBook.jsp`에 직접 POST하면 도서가 등록될 수 있음 | 보호 대상이 `/addBook.jsp` 하나뿐 — 교재 범위와 같지만 실제 서비스라면 처리 페이지도 보호 필요 |
+| `login.jsp` (10장) | 라벨 클릭 시 입력칸으로 포커스가 가지 않음 | 두 `<label for="floatingInput">`이 가리키는 `id="floatingInput"` 요소가 없음 (화면 표시는 정상) |
 
 ---
 
@@ -879,3 +1030,8 @@ function CheckAddBook() {
 | **정적 리소스 경로 재구성** | `webapp/css`, `webapp/images` → `webapp/resources/{css,images,js}`로 통합 | addBook.jsp, book.jsp, books.jsp, processAddBook.jsp |
 | **버튼 클릭 검증 → 명시적 submit** | `type="button" onclick="검증함수()"` 후 통과 시에만 `form.submit()` 호출 | addBook.jsp, resources/js/validation.js |
 | **함수 선언 호이스팅** | 함수 본문 중간의 내부 함수 선언도 호이스팅되어 그보다 앞선 코드에서 호출 가능 | validation.js의 `check()` |
+| **선언적 보안 (10장)** | `web.xml`의 `security-role` / `security-constraint` / `login-config`로 `admin`만 도서 등록 접근 | WEB-INF/web.xml |
+| **FORM 인증 (10장)** | `j_security_check` + `j_username` / `j_password`로 Tomcat이 인증 처리 | login.jsp |
+| **오류 파라미터 리다이렉트 (10장)** | 실패 시 `sendRedirect("login.jsp?error=1")` → 같은 로그인 화면에 경고 표시 | login_failed.jsp, login.jsp |
+| **세션 무효화 로그아웃 (10장)** | `session.invalidate()` 후 보호 페이지로 이동해 재인증 유도 | logout.jsp |
+| **언어 전환 링크 (9장, 진행 중)** | `?language=ko` / `?language=en` 쿼리 파라미터로 로케일 지정 준비 | addBook.jsp |

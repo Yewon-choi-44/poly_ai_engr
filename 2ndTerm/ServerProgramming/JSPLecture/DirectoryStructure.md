@@ -11,6 +11,190 @@
 
 ---
 
+## 🗓️ 2026-10-27
+
+> 2026-09-22 이후 진행된 실습 4회차(10-08, 10-12, 10-19 + BookMarket 10장)가 구조 문서에 반영되지 않은 채 쌓여 있어 한꺼번에 정리했습니다. 코드는 수정하지 않았습니다.
+
+### 변경사항 요약
+| 구분 | 내용 |
+|------|------|
+| ➕ 추가 | `JSP1008/` 프로젝트 — [10-08] 시큐리티(10장) 실습: `web.xml` 선언적 보안 + FORM 인증 (`login.jsp`, `login_failed.jsp`, `security01.jsp`, `security02.jsp`) |
+| ➕ 추가 | `JSP1012/` 프로젝트 — [10-12] 예외 처리(11장) 실습: errorPage / isErrorPage / exception 객체 / 오류 코드 / 예외 유형 / try-catch (JSP 16개) |
+| ➕ 추가 | `JSPSource/` 프로젝트 — [10-12] 교재 2~18장 전체 예제 소스 (JSP 167개, Java 8개, properties 2개, SQL 8개, `web.xml` 변형 3개) |
+| ➕ 추가 | `EXAM1019/` 프로젝트 — [10-19] 8·10·12장 종합 평가 프로젝트 (로그인 폼 검증 + 보안 설정 + `com.filter.LoginYewonChoi` 필터) |
+| ➕ 추가 | `BookMarket/src/main/webapp/WEB-INF/web.xml` — [10-08] 10장: `admin` 역할로 `/addBook.jsp` 보호, FORM 인증 |
+| ➕ 추가 | `BookMarket/src/main/webapp/login.jsp` / `login_failed.jsp` / `logout.jsp` — [10-08] 10장 관리자 로그인·실패 리다이렉트·로그아웃 |
+| 🔧 변경 | `BookMarket/src/main/webapp/addBook.jsp` — [10-08] Korean/English 언어 링크(9장 일부) + 로그아웃 버튼(10장) 추가 |
+| ➕ 추가 | `JSP1008/.gitignore`, `JSP1012/.gitignore`, `JSPSource/.gitignore`, `EXAM1019/.gitignore` — 다른 프로젝트와 동일한 표준 패턴으로 신규 생성 (이전까지 누락) |
+| 🔧 변경 | 루트 `.gitignore` 주석 — 추적 대상 프로젝트 목록에 `JSP1008`, `JSP1012`, `JSPSource`, `EXAM1019` 추가 |
+| ➕ 추가 | `../notes/2026-10-08.md`, `../notes/2026-10-12.md`, `../notes/2026-10-19.md` — 날짜별 실습 정리 노트 (전체 원본 코드 + 동작 원리 + 이슈) |
+| 🔧 변경 | `../notes/BookMarket.md` — 9장(진행 중)·10장(완료) 현황, 디렉토리 구조, `addBook.jsp` 최신 코드, 신규 4개 파일 전체 코드, 발견된 이슈 갱신 |
+| ➕ 추가 | `../README.md` — ServerProgramming 루트 개요 문서 신규 작성 (기존에 없었음) |
+
+> ⚠️ 주요 확인 필요 사항(코드는 수정하지 않음):
+> - `JSP1012/WEB-INF/web.xml`에 `<error-page>` 매핑이 없어 오류 코드/예외 유형 실습의 오류 페이지가 동작하지 않음 → [`notes/2026-10-12.md`](../notes/2026-10-12.md) 4번
+> - `EXAM1019/WEB-INF/web.xml`의 `/2/…`, `/4/…` 경로와 실제 파일 위치(webapp 루트)가 일치하지 않음, `loginForm.jsp` 폼 이름 불일치 → [`notes/2026-10-19.md`](../notes/2026-10-19.md) 4번
+> - `JSPSource/ch16`, `ch17`에 교재 기본 MySQL 접속 정보(`root` 계정)가 하드코딩되어 있음 — 실제 비밀번호로 바꿔 쓰게 되면 커밋 전 확인
+> - `Servers/.../tomcat-users.xml`에 `admin` 사용자명이 중복 정의됨 → [`notes/2026-10-08.md`](../notes/2026-10-08.md) 4번
+
+### 현재 디렉토리 구조
+
+```
+JSPLecture/                                  ← Eclipse 워크스페이스 루트
+│
+├── .gitignore                               ← ✅ 추적 대상 주석에 신규 4개 프로젝트 추가
+├── .project                                 ← 워크스페이스 메타 파일
+├── DirectoryStructure.md                    ← 📄 이 파일
+│
+├── .metadata/                               ← Eclipse 런타임 데이터 (gitignore됨)
+│
+├── JSP0819/                                 ← 1~2장 실습 프로젝트
+├── JSP0828/                                 ← 3~4장 실습 프로젝트 (액션 태그 & JavaBeans)
+├── JSP0904/                                 ← 5장 실습 프로젝트 (JSP 내장 객체)
+├── JSP0911/                                 ← 7장 실습 프로젝트 (파일 업로드)
+├── JSP0918/                                 ← 8장 실습 프로젝트 (유효성 검사)
+│   (위 5개 프로젝트는 이전 항목에서 구조 변경 없음 — 하단 과거 이력 참고)
+│
+├── JSP1008/                                 ← 🆕 10장 실습 프로젝트 (시큐리티)
+│   ├── .classpath / .project / .gitignore   ← ✅ 오늘 .gitignore 신규 생성 (표준 패턴)
+│   ├── .settings/ · build/                  ← gitignore됨
+│   └── src/main/
+│       ├── java/                            ← (비어 있음)
+│       └── webapp/
+│           ├── login.jsp                    ← FORM 인증 폼 (j_security_check)
+│           ├── login_failed.jsp             ← 인증 실패 페이지
+│           ├── security01.jsp               ← 인증 성공 안내 (보호 대상 아님)
+│           ├── security02.jsp               ← 🔒 role1 전용 — getRemoteUser/getAuthType/isUserInRole 출력
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/web.xml              ← security-role(role1) + security-constraint + login-config(FORM)
+│
+├── JSP1012/                                 ← 🆕 11장 실습 프로젝트 (예외 처리)
+│   ├── .classpath / .project / .gitignore   ← ✅ 오늘 .gitignore 신규 생성
+│   ├── .settings/ · build/                  ← gitignore됨
+│   └── src/main/
+│       ├── java/                            ← (비어 있음)
+│       └── webapp/
+│           ├── errorPage.jsp / errorPage_error.jsp                          ← ① errorPage 속성
+│           ├── isErrorPage.jsp / isErrorPage_error.jsp                      ← ② isErrorPage + exception 객체
+│           ├── exception.jsp / exception_process.jsp / exception_error.jsp  ← ③ exception 메서드 4종
+│           ├── errorCode.jsp / errorCode_process.jsp / errorCode_error.jsp  ← ④ web.xml 오류 코드용
+│           ├── exceptionType.jsp / exceptionType_process.jsp / exceptionType_error.jsp ← ⑤ web.xml 예외 유형용
+│           ├── tryCatch.jsp / tryCatch_process.jsp / tryCatch_error.jsp     ← ⑥ try-catch + forward
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/web.xml              ← ⚠️ 10장 보안 설정 복사본 (error-page 매핑 없음)
+│
+├── JSPSource/                               ← 🆕 교재 2~18장 예제 소스 (참고용)
+│   ├── .classpath / .project / .gitignore   ← ✅ 오늘 .gitignore 신규 생성
+│   ├── .settings/ · build/                  ← gitignore됨
+│   └── src/main/
+│       ├── java/
+│       │   ├── ch04/com/dao/                ← Calculator.java, Person.java
+│       │   ├── ch09/com/bundle/             ← myBundle.properties, myBundle_en.properties
+│       │   ├── ch12/com/filter/             ← AuthenFilter, InitParamFilter, LogFileFilter
+│       │   └── ch18/com/{controller,model}/ ← ControllerServlet, LoginController, LoginBean
+│       └── webapp/
+│           ├── hello.jsp
+│           ├── ch02/ ~ ch18/                ← 장별 예제 JSP/SQL (ch02:9, ch03:17, ch04:17, ch05:16, ch06:12, ch07:10,
+│           │                                   ch08:10, ch09:5, ch10:4, ch11:16, ch12:4, ch13:9, ch14:4, ch15:6,
+│           │                                   ch16:17, ch17:15, ch18:3)
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/
+│               ├── web.xml                  ← /ch10/security02.jsp FORM 인증
+│               ├── ch10_web_BASIC.xml / ch10_web_FORM.xml / ch10)web_FORME_02.xml ← 10장 설정 예시
+│               └── lib/*.jar                ← cos, commons-fileupload/io, jstl, mysql-connector (gitignore됨)
+│
+├── EXAM1019/                                ← 🆕 8·10·12장 종합 평가 프로젝트
+│   ├── .classpath / .project / .gitignore   ← ✅ 오늘 .gitignore 신규 생성
+│   ├── .settings/ · build/                  ← gitignore됨
+│   └── src/main/
+│       ├── java/com/filter/
+│       │   └── LoginYewonChoi.java          ← name 파라미터 검사 Filter (init/doFilter/destroy)
+│       └── webapp/
+│           ├── 1/ 2/ 3/ 4/                  ← 문항별 폴더 (비어 있음)
+│           ├── loginForm.jsp                ← 비밀번호 8~12자 길이 검사 폼
+│           ├── loginForm_process.jsp        ← id/pw 출력
+│           ├── login.jsp                    ← 로그인 폼
+│           ├── login_success.jsp            ← 로그인 성공 + 로그아웃 링크
+│           ├── login_failed.jsp             ← 로그인 실패
+│           ├── success.jsp                  ← 필터 적용 대상 페이지
+│           ├── META-INF/MANIFEST.MF
+│           └── WEB-INF/web.xml              ← admin 보안 + FORM 인증(/4/…) + logFilter 매핑(/4/success.jsp)
+│
+├── BookMarket/                              ← 📚 누적 메인 프로젝트 (현재: 10장 반영, 9장 일부)
+│   ├── .classpath / .project / .gitignore
+│   ├── .settings/ · build/                  ← gitignore됨
+│   └── src/main/
+│       ├── java/
+│       │   ├── dto/Book.java                ← ✅ [4장] 도서 DTO
+│       │   └── dao/BookRepository.java      ← ✅ [4장] 도서 목록 저장소
+│       └── webapp/
+│           ├── Welcome0819.jsp              ← ✅ [2장] Bootstrap 시작 페이지
+│           ├── welcome.jsp                  ← ✅ [3장] 모듈화
+│           ├── menu.jsp / footer.jsp        ← ✅ [3장] 헤더/푸터 부품
+│           ├── books.jsp                    ← ✅ [4장] 도서 목록 페이지
+│           ├── book.jsp                     ← ✅ [5장] 도서 상세 정보 페이지
+│           ├── addBook.jsp                  ← 🔧 [6~10장] 도서 등록 폼 — 언어 링크 + 로그아웃 버튼 추가, 🔒 admin 전용
+│           ├── processAddBook.jsp           ← ✅ [7장] 등록 처리
+│           ├── login.jsp                    ← 🆕 [10장] 관리자 FORM 로그인 (Bootstrap floating label)
+│           ├── login_failed.jsp             ← 🆕 [10장] login.jsp?error=1 리다이렉트
+│           ├── logout.jsp                   ← 🆕 [10장] session.invalidate() → addBook.jsp
+│           ├── META-INF/
+│           ├── WEB-INF/
+│           │   ├── web.xml                  ← 🆕 [10장] admin 역할 + /addBook.jsp 보호 + FORM 인증
+│           │   └── lib/                     ← cos.jar 등 (gitignore됨)
+│           └── resources/
+│               ├── css/bootstrap.min.css
+│               ├── js/validation.js         ← [8장] 도서 등록 폼 클라이언트 검증
+│               └── images/                  ← seed 이미지 3장 + 업로드 테스트 이미지 + Thumbs.db(gitignore됨)
+│
+└── Servers/                                 ← Tomcat 로컬 설정 (gitignore됨)
+    └── Tomcat v9.0 Server at localhost-config/
+        └── tomcat-users.xml                 ← ⚠️ 계정 정보 포함 (role1, tomcat, admin 역할 정의)
+```
+
+### .gitignore 현황 (루트)
+```gitignore
+# Eclipse 워크스페이스 메타데이터
+.metadata/
+
+# 컴파일 결과물 (모든 하위 프로젝트 포함)
+build/
+**/build/
+
+# Eclipse IDE 설정
+.settings/
+**/.settings/
+
+# JAR 라이브러리 (모든 하위 경로)
+**/WEB-INF/lib/*.jar
+
+# Tomcat 서버 설정 (계정 정보 포함 가능)
+Servers/
+
+# 컴파일된 클래스 파일
+*.class
+
+# 로그 파일
+*.log
+
+# 실습 완료 프로젝트 - 모두 정상 추적 중
+# JSP0819, JSP0828, JSP0904, JSP0911, JSP0918, JSP1008, JSP1012, JSPSource, EXAM1019, BookMarket 추적 대상
+```
+
+### 신규 프로젝트 개별 `.gitignore` (`JSP1008`, `JSP1012`, `JSPSource`, `EXAM1019` 공통)
+```gitignore
+# Eclipse 빌드 결과물 및 IDE 설정
+/build/
+/.settings/
+/src/main/webapp/WEB-INF/lib/*.jar
+*.class
+*.log
+```
+
+> 점검 결과: 신규 4개 프로젝트가 통째로 무시되는 규칙은 없으며(0번 원칙), `git status`상 `JSPSource/WEB-INF/lib/*.jar`, `build/`, `.settings/`는 추적 목록에 나타나지 않음을 확인했습니다.
+
+---
+
 ## 🗓️ 2026-09-22 (오후 18:49)
 
 ### 변경사항 요약
