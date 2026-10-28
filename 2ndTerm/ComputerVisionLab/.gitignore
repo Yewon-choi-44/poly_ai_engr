@@ -12,6 +12,7 @@ __pycache__/
 
 # 데이터셋 (용량이 크므로 제외)
 data/
+YoloReport/vehicle dataset/
 *.zip
 *.tar
 *.tar.gz

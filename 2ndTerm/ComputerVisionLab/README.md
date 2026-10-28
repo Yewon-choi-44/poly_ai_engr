@@ -16,6 +16,8 @@ ComputerVisionLab/
 ├── 0907_Mon/                                                 # 반도체 공정데이터분석 및 최적화 실습 (SECOM)
 ├── 0920Th/                                                   # RAG(검색증강생성) 파이프라인 구축 실습
 ├── 0921_Mo/                                                  # Python 객체지향(OOP) 클래스 기초 실습
+├── 0928_Mo/                                                  # OOP 심화(상속·오버로딩·추상 클래스·다중 상속) + OpenCV 이미지 읽기
+├── YoloReport/                                               # OpenCV 마우스 콜백 실습 + YOLO 라벨링 도구 과제 (차량 데이터셋)
 ├── HW/                                                       # Kuffers 데이터셋 실습 및 과제 스크립트
 ├── notes/                                                    # 수업 교안 및 이론 강의 자료 (PDF)
 ├── data/                                                     # 이미지 데이터셋 (MNIST, FashionMNIST, kuffers, YOLO 등)
@@ -29,6 +31,38 @@ ComputerVisionLab/
 ---
 
 ## 📅 실습 및 학습 일지 (Changelog)
+
+### 2026-10-13
+- **수업 주제**: OpenCV 마우스 이벤트(`setMouseCallback`) 활용 및 YOLO 라벨링 도구 만들기 과제(YoloReport)
+- **주요 작업 내용**:
+  - 마우스 콜백 함수 형식(`on_mouse(event, x, y, flags, param)`)과 등록 함수(`cv2.setMouseCallback(창이름, 함수)`)의 2단계 구조 정리
+  - OpenCV 공식 예제 방식으로 검은 캔버스(`np.zeros((512,512,3))`)에 마우스 드래그로 사각형/원 그리기 구현 (`m` 키로 모드 전환, `ESC` 종료, `global` 변수로 시작점·드래그 상태 유지)
+  - 차량 데이터셋 이미지를 `cv2.imread`로 불러와, 마우스 누른 지점(`ix, iy`)과 뗀 지점(`x, y`)을 잇는 바운딩 박스를 그리는 라벨링 도구 초안 작성 (`q` 키 종료)
+  - 흰 캔버스(`np.full(..., 255)`)에 왼쪽 클릭으로 점 찍기, 오른쪽 클릭으로 캔버스 초기화
+  - 과제 목표(`sample2.py` 상단 메모): ① 마우스 콜백 이용 ② labelme와 비슷한 프로그램 ③ YOLO `label.txt`(GT) 형식 출력 ④ `annotation.txt`(class, x, y, w, h) ⑤ YOLO 이미지 그리드
+- **추가/수정된 파일**:
+  - `YoloReport/sample.py`: 드래그 사각형/원 그리기 예제 + 마우스 콜백 구조 정리 주석 (상단에 Roboflow `inference_sdk` 워크플로 호출 예시가 주석으로 포함 — API 키는 `"API_KEY"` 자리표시자)
+  - `YoloReport/sample2.py`: 차량 이미지 위 바운딩 박스 그리기 (라벨링 도구 초안), 이미지 폴더 순회 코드는 주석 처리된 상태
+  - `YoloReport/sample3.py`: 흰 캔버스 클릭 점 찍기 / 우클릭 초기화
+  - `YoloReport/vehicle dataset/`: YOLO 형식 차량 데이터셋 — 클래스 6개(`car`, `threewheel`, `bus`, `truck`, `motorbike`, `van`, `classes.txt`), `train/images` 2,100장 + `train/labels` 2,100개, `valid/images` 248장(`valid/labels` 비어 있음), 약 304MB → `.gitignore`에 추가해 Git 미추적 처리
+- **참고 (코드 관찰, 수정하지 않음)**: `sample2.py`/`sample3.py`는 이벤트 비교에 `cv2.EVENT_FLAG_LBUTTON`/`EVENT_FLAG_RBUTTON`(키 상태 플래그, 값 1·2)을 사용 — 값이 `EVENT_LBUTTONDOWN`(1)·`EVENT_RBUTTONDOWN`(2)과 같아서 동작은 하지만 의미상으로는 `EVENT_*BUTTONDOWN`이 맞음. `sample2.py`는 이미지 경로가 상대경로(`./vehicle dataset/...`)라 `YoloReport/` 폴더에서 실행해야 함
+
+### 2026-09-28
+- **수업 주제**: Python 객체지향 심화(다형성·오버라이딩, 오버로딩, 추상 클래스, 다중 상속/상속 체인) + OpenCV 이미지 읽기 기초
+- **주요 작업 내용**:
+  - 고객 등급별 계산을 `if/elif`로 나누면 등급이 늘 때마다 함수를 고쳐야 한다는 문제 제기 → 기본 `Customer` 클래스를 상속한 `GoldCustomer`에서 `calc_price()`만 **오버라이딩**하는 다형성 구조로 해결 (과제: VIP 등급·에이전트 ID 클래스 추가 및 main문 작성)
+  - Python은 같은 이름의 메서드를 여러 번 정의하면 마지막 것만 남으므로, `multipledispatch` 패키지의 `@dispatch(int, str)` 데코레이터로 매개변수 타입별 생성자 **오버로딩** 실습
+  - Java의 `abstract class`/`@Override` 문법과 비교하며 `abc` 모듈의 `ABCMeta` + `@abstractmethod`로 **추상 클래스** `Computer`와 구현 클래스 `Desktop` 작성 (과제: `Notebook` 클래스 직접 구현, 파일·폴더 이름에 `abc` 사용 금지 주의)
+  - `Rect` → `SquareInh` → `Cube`로 이어지는 **상속 체인**에서 `super().area_tmp()`(바로 위 부모)와 `super(SquareInh, self).area_tmp()`(한 단계 건너뛴 조부모)의 호출 대상 차이 실습
+  - OpenCV로 이미지 읽기(`cv2.imread`), `img.shape`(높이·너비·채널), 원점 픽셀의 **BGR** 값 확인, `cv2.cvtColor(BGR2GRAY)` 처리 시간 측정(`time.time()`), `cv2.resize`, `cv2.imshow`/`waitKey`/`destroyAllWindows`
+- **추가/수정된 파일**:
+  - `0928_Mo/inheritance_ex.py`: `Customer`/`GoldCustomer` 등급별 오버라이딩 (다형성)
+  - `0928_Mo/overloading_ex.py`: `multipledispatch` 기반 생성자 오버로딩 (설치·테스트 과제용 미완성 코드)
+  - `0928_Mo/abstract_ex.py`: `ABCMeta` 추상 클래스 `Computer` + `Desktop` 구현
+  - `0928_Mo/multiinheritance_ex.py`: `Rect`/`Square`/`SquareInh`/`Cube` 상속 체인과 `super()` 호출 대상 비교
+  - `0928_Mo/imread_ex.py`: OpenCV 이미지 읽기·흑백 변환·크기 조절·표시
+  - `0928_Mo/20260917_0615170.jpg`: `imread_ex.py` 실습용 사진 (약 257KB)
+- **참고 (코드 관찰, 수정하지 않음)**: `inheritance_ex.py`의 `self.bonus_ratio - 0.1`은 대입(`=`)이 아니라 빼기 식이라 Gold 적립률이 0.05 그대로 유지됨 / `overloading_ex.py`의 객체 생성 코드가 클래스 본문 안에 들여쓰기되어 있어 실행 시 `NameError` 발생, `Student(…, "Lee", 2)`용 3인자 `@dispatch`도 아직 없음 / `multiinheritance_ex.py`의 `SquareInh(rect)`·`Cube(squareInh)`는 숫자 대신 객체를 넘기고, `volumn()`은 반환값이 없음 / `imread_ex.py`는 `img is None` 검사 전에 `img.shape`를 먼저 출력
 
 ### 2026-09-21
 - **수업 주제**: Python 객체지향(OOP) 클래스 기초 — 생성자, 상속, 클래스 변수 vs 인스턴스 변수, 객체 간 협력

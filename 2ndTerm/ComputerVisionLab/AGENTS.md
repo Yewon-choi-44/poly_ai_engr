@@ -8,7 +8,7 @@
 
 어떤 작업이든 시작하기 전에 **가장 먼저** 다음 두 가지를 점검한다.
 
-- **`.gitignore` 최신 상태 확인**: 새로 생긴 산출물(모델 가중치, 데이터셋 폴더, 압축파일, `__pycache__` 등)이 무시 목록에 없다면 즉시 추가한다. 현재 `.gitignore`는 `data/`, `notes/`, `synthetic_capacitors/`, 모델 가중치(`*.pt`, `*.pth`, `*.ckpt`, `*.onnx`, `*.h5` 등), 압축파일(`*.zip`, `*.tar.gz`), `__pycache__/`, 가상환경(`.venv/`, `venv/`)을 이미 추적 제외하고 있다.
+- **`.gitignore` 최신 상태 확인**: 새로 생긴 산출물(모델 가중치, 데이터셋 폴더, 압축파일, `__pycache__` 등)이 무시 목록에 없다면 즉시 추가한다. 현재 `.gitignore`는 `data/`, `YoloReport/vehicle dataset/`, `notes/`, `synthetic_capacitors/`, 모델 가중치(`*.pt`, `*.pth`, `*.ckpt`, `*.onnx`, `*.h5` 등), 압축파일(`*.zip`, `*.tar.gz`), `__pycache__/`, 가상환경(`.venv/`, `venv/`)을 이미 추적 제외하고 있다.
 - **저장소 범위 확인**: 이 폴더의 `.git`은 `ComputerVisionLab/`이나 `2ndTerm/`이 아니라 **훨씬 상위인 `C:\Users\AI-00\Desktop\하이테크_`**에 있다(`git rev-parse --show-toplevel`로 확인). 즉 `2ndTerm/` 아래의 `ServerProgramming`, `AIFramework`, `AISystemDevelopmentandOperationsPracticum`뿐 아니라, `하이테크_` 바로 아래의 `AI_DataPreprocessing`, `Database_SQL`, `기계학습프로그래밍`, `웹프로그래밍`, `자바프로그래밍` 등 **다른 학기·다른 과목 폴더까지 전부 같은 git 저장소를 공유**한다. 따라서:
   - `git status`/`git add`/`git commit` 등은 항상 `ComputerVisionLab/` 경로로 범위를 제한한다 (예: `git status -- .`, `git add ComputerVisionLab/...`).
   - 다른 과목 폴더에 있는 변경 사항(예: `ServerProgramming/...`, `자바프로그래밍/...`)은 이 워크스페이스 작업과 무관하므로 손대거나 커밋에 포함하지 않는다.
@@ -26,6 +26,8 @@
 | `0907_Mon/` | 공정데이터분석 및 최적화 실습 |
 | `0920Th/` | RAG(Retrieval-Augmented Generation) 실습 |
 | `0921_Mo/` | Python 클래스(OOP) 기초 실습 (클래스 변수, 네임스페이스 등) |
+| `0928_Mo/` | Python OOP 심화(오버라이딩·오버로딩·추상 클래스·상속 체인) + OpenCV 이미지 읽기 기초 |
+| `YoloReport/` | OpenCV 마우스 콜백 실습 + YOLO 라벨링 도구 과제 (`vehicle dataset/`은 Git 미추적) |
 | `HW/` | Kuffers 데이터셋 분류 과제 스크립트 및 결과 시각화 |
 | `notes/` | 수업 교안·이론 강의 자료 (PDF, Git 미추적) |
 | `data/` | 학습/평가용 데이터셋 (MNIST, FashionMNIST, kuffers, YOLO 데이터셋 등, Git 미추적) |
